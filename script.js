@@ -14,6 +14,10 @@ const WHATSAPP_NUMBER = "549XXXXXXXXXX";
 // Mensaje inicial del botón "Hacer pedido" del hero / flotante cuando el carrito está vacío.
 const WHATSAPP_SALUDO = "Hola BAUMAR, quisiera hacer una consulta sobre sus productos.";
 
+// Usuario/URL de Instagram de la distribuidora.
+// IMPORTANTE: reemplazar por el usuario real antes de publicar el sitio.
+const INSTAGRAM_URL = "https://instagram.com/baumar.distribuidora";
+
 /* ==========================================================================
    2) CATEGORÍAS
    Cada categoría define id, nombre visible, un código de "aisle" (estante de
@@ -72,15 +76,15 @@ const PRODUCTS = [
   p("Soda", "Villa del Sur", "aguas", 780, "Sifón 2,25 L", "soda-225"),
   p("Jugo de Naranja", "Cepita", "jugos", 1350, "Botella 1 L", "cepita-naranja-1l"),
   p("Jugo Multifruta", "Baggio", "jugos", 1600, "Botella 1,5 L", "baggio-multifruta-15", { etiqueta: "nuevo" }),
-  p("Jugo 100% Naranja Exprimido", "Baggio", "jugos", 2700, "Botella 1 L — Bulto x12 ($32.400 el bulto)", "baggio-naranja-100-1l", { destacado: true, etiqueta: "oferta" }),
   p("Jugo en Polvo Naranja", "Ades", "jugos", 480, "Sobre 500 g", "ades-polvo-naranja"),
   p("Cerveza Rubia", "Quilmes", "bebidas", 1400, "Botella 1 L", "quilmes-1l", { destacado: true }),
   p("Cerveza IPA", "Patagonia", "bebidas", 1650, "Botella 730 ml", "patagonia-ipa-730"),
   p("Vino Tinto Malbec", "Toro", "bebidas", 3200, "Botella 750 ml", "toro-malbec-750"),
-  p("Vino Tinto Uvita", "Uvita", "bebidas", 2267, "Botella 1125 ml — Bulto x6 ($13.600 el bulto)", "uvita-tinto-1125", { destacado: true, etiqueta: "oferta" }),
   p("Té Helado Durazno", "Nestea", "bebidas", 1250, "Botella 1,5 L", "nestea-durazno-15"),
   p("Energizante", "Speed", "bebidas", 1100, "Lata 473 ml", "speed-473"),
   p("Yerba Mate", "Playadito", "bebidas", 3800, "Paquete 1 kg", "playadito-1kg", { destacado: true, etiqueta: "vendido" }),
+  p("Vino Tinto Uvita", "Uvita", "bebidas", 2267, "Botella 1,125 L — bulto x6", "uvita-tinto-1125", { destacado: true, etiqueta: "oferta" }),
+  p("Jugo de Naranja 100% Exprimido", "Baggio", "jugos", 2700, "Tetra Pak 1 L — bulto x12", "baggio-naranja-1l", { destacado: true, etiqueta: "oferta" }),
 
   // ALMACÉN — fideos / arroz / harinas / aceites / conservas
   p("Fideos Tallarín", "Matarazzo", "fideos", 890, "Paquete 500 g", "matarazzo-tallarin-500"),
@@ -267,13 +271,15 @@ function productCardHTML(prod) {
     <article class="product-card reveal" data-sku="${prod.sku}">
       <div class="product-card__media">
         <div class="product-card__badges">${badges.join("")}</div>
-        <span class="product-card__ticket">${prod.sku.slice(-6).toUpperCase()}</span>
         <img src="${prod.imagen}" alt="${prod.nombre} — ${prod.presentacion}" loading="lazy"
              onerror="this.replaceWith(buildPlaceholder('${cat ? cat.icon : "box"}'))">
       </div>
       <div class="product-card__body">
         <span class="product-card__cat">${cat ? cat.nombre : prod.categoria}</span>
-        <span class="product-card__brand">${prod.marca}</span>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+          <span class="product-card__brand">${prod.marca}</span>
+          <span class="product-card__sku">${prod.sku.slice(-6).toUpperCase()}</span>
+        </div>
         <h3 class="product-card__name">${prod.nombre}</h3>
         <p class="product-card__pres">${prod.presentacion}</p>
         <div class="product-card__footer">
@@ -365,22 +371,6 @@ function renderCatalog() {
   }
 
   observeReveal();
-}
-
-/* ==========================================================================
-   10) MANIFIESTO DEL HERO (elemento visual de identidad)
-   ========================================================================== */
-function renderManifest() {
-  const list = document.getElementById("manifestList");
-  const sample = [
-    { nombre: "Coca-Cola 2,25 L", qty: "x24" },
-    { nombre: "Fideos Tallarín", qty: "x40" },
-    { nombre: "Aceite de Girasol", qty: "x18" },
-    { nombre: "Papel Higiénico x4", qty: "x30" },
-  ];
-  list.innerHTML = sample.map((item) =>
-    `<li><span class="m-name">${item.nombre}</span><span class="m-qty">${item.qty}</span></li>`
-  ).join("");
 }
 
 /* ==========================================================================
@@ -664,6 +654,14 @@ function bindEvents() {
   // Enviar pedido por WhatsApp
   document.getElementById("whatsappBtn").addEventListener("click", sendOrderToWhatsapp);
 
+  // Enlaces de Instagram (flotante + footer)
+  [document.getElementById("floatingInstagram"), document.getElementById("footerInstagram")].forEach((el) => {
+    if (!el) return;
+    el.href = INSTAGRAM_URL;
+    el.target = "_blank";
+    el.rel = "noopener";
+  });
+
   // Botones de contacto / hero / footer / flotante
   const genericLinks = [
     document.getElementById("heroOrderBtn"),
@@ -703,7 +701,6 @@ function init() {
   document.getElementById("year").textContent = new Date().getFullYear();
   renderCategories();
   renderBrandFilter();
-  renderManifest();
   renderStats();
   renderFeatured();
   renderCatalog();
