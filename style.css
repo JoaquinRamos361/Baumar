@@ -275,13 +275,13 @@ p { margin: 0; }
 .nav-overlay.active { opacity: 1; pointer-events: auto; }
 
 /* ==========================================================================
-   HERO + MANIFEST (elemento distintivo)
-   Fondo oscuro con el isotipo BAUMAR como marca de agua gigante: refuerza
-   la identidad de marca sin competir con el contenido ni el CTA.
+   HERO
+   Fondo oscuro con el isotipo BAUMAR como marca de agua y dos cajas
+   flotantes como detalle decorativo, sin elementos que tapen el logo.
    ========================================================================== */
 .hero {
   position: relative;
-  padding: 128px 0 96px;
+  padding: 88px 0 96px;
   overflow: hidden;
   background:
     radial-gradient(circle at 14% 18%, rgba(232, 162, 60, 0.16), transparent 46%),
@@ -297,9 +297,9 @@ p { margin: 0; }
   inset: -8% -6%;
   background-image: url("images/logo/logo-fondo.png");
   background-repeat: no-repeat;
-  background-position: 58% 66%;
+  background-position: 60% 50%;
   background-size: 1180px auto;
-  opacity: 0.1;
+  opacity: 0.13;
   filter: saturate(0);
   z-index: 0;
   pointer-events: none;
@@ -365,97 +365,32 @@ p { margin: 0; }
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  animation: fadeUp 0.8s 0.1s var(--ease) both;
-  margin-top: -110px;
-}
-
-.manifest {
-  background: var(--paper-alt);
-  border: 1.5px solid var(--ink);
-  border-radius: var(--radius-md);
-  width: 100%;
-  max-width: 380px;
-  padding: 26px 26px 22px;
-  box-shadow: 0 30px 60px -16px rgba(0, 0, 0, 0.55), 0 4px 14px rgba(0, 0, 0, 0.3);
-  position: relative;
-  z-index: 2;
-  transform: rotate(-1.4deg);
-  color: var(--ink);
-}
-.manifest::before {
-  content: "";
-  position: absolute;
-  top: 14px; bottom: 14px; left: -1.5px;
-  width: 6px;
-  background-image: repeating-linear-gradient(to bottom, var(--ink) 0 6px, transparent 6px 12px);
-  border-radius: 4px;
-}
-.manifest__head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding-bottom: 14px;
-  margin-bottom: 14px;
-  border-bottom: 1.5px dashed var(--line);
-}
-.manifest__title { font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--ink); }
-.manifest__code { font-family: var(--font-mono); font-size: 12px; color: var(--steel-light); }
-
-.manifest__list { display: flex; flex-direction: column; gap: 11px; margin-bottom: 16px; }
-.manifest__list li {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  font-size: 13.5px;
-  padding-bottom: 11px;
-  border-bottom: 1px solid var(--line-soft);
-  color: var(--ink);
-}
-.manifest__list li:last-child { border-bottom: none; padding-bottom: 0; }
-.manifest__list .m-name { font-weight: 600; color: var(--ink); }
-.manifest__list .m-qty { font-family: var(--font-mono); color: var(--steel); flex-shrink: 0; }
-
-.manifest__foot {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-size: 11.5px;
-  color: var(--steel-light);
-  padding-top: 12px;
-  border-top: 1.5px dashed var(--line);
-}
-.manifest__stamp {
-  font-family: var(--font-mono);
-  font-weight: 700;
-  color: var(--crate-red);
-  border: 1.5px solid var(--crate-red);
-  padding: 3px 8px;
-  border-radius: 4px;
-  transform: rotate(-6deg);
-  letter-spacing: 0.05em;
+  animation: fadeUp 0.8s 0.1s var(--ease) both;
+  min-height: 360px;
+  width: 100%;
 }
 
 .crate {
   position: absolute;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   border: 1.5px solid var(--ink);
 }
 .crate--a {
-  width: 120px; height: 90px;
+  width: 110px; height: 88px;
   background: var(--amber);
-  right: -18px; bottom: 6px;
+  right: 2%; bottom: 6%;
   transform: rotate(7deg);
   z-index: 1;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
 }
 .crate--b {
-  width: 70px; height: 70px;
+  width: 78px; height: 78px;
   background: var(--steel);
-  left: -14px; top: 18px;
+  left: 2%; top: 0%;
   transform: rotate(-10deg);
   z-index: 1;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
 }
 
 /* ==========================================================================
@@ -620,12 +555,12 @@ p { margin: 0; }
 
 .product-card__media {
   position: relative;
-  aspect-ratio: 4 / 3.1;
+  aspect-ratio: 4 / 3.6;
   background: var(--paper-dim);
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
 }
-.product-card__media img { width: 100%; height: 100%; object-fit: cover; }
+.product-card__media img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
 .product-card__placeholder {
   display: flex; flex-direction: column; align-items: center; gap: 8px;
   color: var(--steel-light);
@@ -648,18 +583,11 @@ p { margin: 0; }
 .badge--vendido { background: var(--ink); }
 .badge--nuevo { background: var(--steel); }
 
-.product-card__ticket {
-  position: absolute;
-  top: 0; right: 12px;
-  background: var(--amber);
-  color: var(--ink);
+.product-card__sku {
   font-family: var(--font-mono);
   font-size: 10px;
-  font-weight: 700;
-  padding: 5px 8px 6px;
-  border-radius: 0 0 6px 6px;
+  color: var(--steel-light);
   letter-spacing: 0.02em;
-  box-shadow: var(--shadow-sm);
 }
 
 .product-card__body { padding: 16px 16px 18px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
@@ -916,6 +844,21 @@ p { margin: 0; }
 }
 .floating-whatsapp svg { width: 27px; height: 27px; }
 .floating-whatsapp:hover { transform: scale(1.08); }
+
+.floating-instagram {
+  position: fixed;
+  bottom: 24px; left: 24px;
+  width: 58px; height: 58px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-lg);
+  z-index: 70;
+  transition: transform 0.2s var(--ease);
+}
+.floating-instagram svg { width: 26px; height: 26px; }
+.floating-instagram:hover { transform: scale(1.08); }
 
 .toast {
   position: fixed;
