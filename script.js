@@ -9,14 +9,14 @@
 
 // Número de WhatsApp de la distribuidora (formato internacional, sin espacios ni signos).
 // IMPORTANTE: reemplazar por el número real antes de publicar el sitio.
-const WHATSAPP_NUMBER = "549XXXXXXXXXX";
+const WHATSAPP_NUMBER = "5491121543013";
 
 // Mensaje inicial del botón "Hacer pedido" del hero / flotante cuando el carrito está vacío.
 const WHATSAPP_SALUDO = "Hola BAUMAR, quisiera hacer una consulta sobre sus productos.";
 
 // Usuario/URL de Instagram de la distribuidora.
 // IMPORTANTE: reemplazar por el usuario real antes de publicar el sitio.
-const INSTAGRAM_URL = "https://instagram.com/baumar.distribuidora";
+const INSTAGRAM_URL = "https://instagram.com/baumardistribuidora";
 
 /* ==========================================================================
    2) CATEGORÍAS
