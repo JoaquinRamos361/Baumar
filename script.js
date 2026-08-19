@@ -17,6 +17,7 @@ const WHATSAPP_SALUDO = "Hola BAUMAR, quisiera hacer una consulta sobre sus prod
 // Usuario/URL de Instagram de la distribuidora.
 // IMPORTANTE: reemplazar por el usuario real antes de publicar el sitio.
 const INSTAGRAM_URL = "https://instagram.com/baumardistribuidora";
+
 /* ==========================================================================
    2) CATEGORÍAS
    Cada categoría define id, nombre visible, un código de "aisle" (estante de
@@ -78,7 +79,8 @@ const PRODUCTS = [
   p("Jugo en Polvo Naranja", "Ades", "jugos", 480, "Sobre 500 g", "ades-polvo-naranja"),
   p("Cerveza Rubia", "Quilmes", "bebidas", 1400, "Botella 1 L", "quilmes-1l", { destacado: true }),
   p("Cerveza IPA", "Patagonia", "bebidas", 1650, "Botella 730 ml", "patagonia-ipa-730"),
-  p("Vino Tinto Malbec", "Toro", "bebidas", 3200, "Botella 750 ml", "toro-malbec-750"),
+  p("Vino Tinto Toro", "Toro", "bebidas", 2000, "Tetra Brik 1 L", "toro-tinto-1l", { destacado: true }),
+  p("Vino Tinto Huellapampa Malbec", "Huellapampa", "bebidas", 5000, "Botella 750 ml", "huellapampa-malbec-750", { destacado: true, etiqueta: "nuevo" }),
   p("Té Helado Durazno", "Nestea", "bebidas", 1250, "Botella 1,5 L", "nestea-durazno-15"),
   p("Energizante", "Speed", "bebidas", 1100, "Lata 473 ml", "speed-473"),
   p("Yerba Mate", "Playadito", "bebidas", 3800, "Paquete 1 kg", "playadito-1kg", { destacado: true, etiqueta: "vendido" }),
