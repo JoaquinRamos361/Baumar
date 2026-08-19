@@ -17,7 +17,6 @@ const WHATSAPP_SALUDO = "Hola BAUMAR, quisiera hacer una consulta sobre sus prod
 // Usuario/URL de Instagram de la distribuidora.
 // IMPORTANTE: reemplazar por el usuario real antes de publicar el sitio.
 const INSTAGRAM_URL = "https://instagram.com/baumardistribuidora";
-
 /* ==========================================================================
    2) CATEGORÍAS
    Cada categoría define id, nombre visible, un código de "aisle" (estante de
