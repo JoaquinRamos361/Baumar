@@ -1128,7 +1128,9 @@ function applyHeroTweaks() {
       display: none !important;
     }
     .hero::before {
-      filter: sepia(1) saturate(900%) hue-rotate(70deg) brightness(0.9) !important;
+      /* grayscale() primero anula cualquier color original de la imagen,
+         así el tinte verde queda garantizado sin importar el tono de base */
+      filter: grayscale(1) sepia(1) saturate(700%) hue-rotate(45deg) brightness(1) contrast(1.15) !important;
     }
   `;
   document.head.appendChild(style);
@@ -1151,4 +1153,3 @@ function init() {
 }
 
 document.addEventListener("DOMContentLoaded", init);
-
