@@ -755,6 +755,194 @@ function sendOrderToWhatsapp() {
 }
 
 /* ==========================================================================
+   14.1) CONFIRMACIÓN DE PEDIDO
+   Antes de abrir WhatsApp, se muestra un resumen del pedido para que el
+   cliente confirme cantidades y datos de contacto. Esto no reemplaza un
+   remito firmado en la entrega, pero reduce pedidos armados por error o
+   apurados, y dejar registrado nombre/teléfono le da al vendedor un dato
+   de contacto para reconfirmar antes de salir a repartir.
+   ========================================================================== */
+function injectConfirmModalStyles() {
+  if (document.getElementById("confirmModalStyles")) return;
+  const style = document.createElement("style");
+  style.id = "confirmModalStyles";
+  style.textContent = `
+    .confirm-overlay {
+      position: fixed; inset: 0;
+      background: rgba(21,22,26,0.55);
+      z-index: 120;
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .confirm-overlay.active { opacity: 1; pointer-events: auto; }
+    .confirm-modal {
+      background: var(--paper-alt, #fffdf9);
+      border-radius: 18px;
+      max-width: 460px;
+      width: 100%;
+      max-height: 86vh;
+      overflow-y: auto;
+      padding: 26px 26px 22px;
+      box-shadow: 0 24px 48px -16px rgba(21,22,26,0.35);
+      transform: translateY(16px);
+      transition: transform 0.25s ease;
+    }
+    .confirm-overlay.active .confirm-modal { transform: translateY(0); }
+    .confirm-modal h3 {
+      font-family: var(--font-display, inherit);
+      font-size: 20px;
+      margin: 0 0 4px;
+    }
+    .confirm-modal p.confirm-sub {
+      font-size: 13.5px;
+      color: var(--steel, #3d4a5c);
+      margin: 0 0 18px;
+    }
+    .confirm-list {
+      list-style: none;
+      margin: 0 0 16px;
+      padding: 0;
+      border-top: 1px solid var(--line, rgba(21,22,26,0.12));
+    }
+    .confirm-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line, rgba(21,22,26,0.12));
+      font-size: 13.5px;
+    }
+    .confirm-list li .qty {
+      font-family: var(--font-mono, monospace);
+      font-weight: 700;
+      color: var(--amber-dark, #c07f1f);
+      margin-right: 8px;
+    }
+    .confirm-list li .name { flex: 1; }
+    .confirm-list li .subtotal { font-family: var(--font-mono, monospace); font-weight: 600; white-space: nowrap; }
+    .confirm-total {
+      display: flex; justify-content: space-between; align-items: baseline;
+      font-weight: 700; font-size: 17px; margin-bottom: 18px;
+    }
+    .confirm-field { margin-bottom: 14px; }
+    .confirm-field label {
+      display: block; font-size: 12.5px; font-weight: 600;
+      color: var(--steel, #3d4a5c); margin-bottom: 6px;
+    }
+    .confirm-field input {
+      width: 100%;
+      border: 1.5px solid var(--line, rgba(21,22,26,0.12));
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 14px;
+      font-family: inherit;
+      box-sizing: border-box;
+    }
+    .confirm-field input:focus {
+      outline: none;
+      border-color: var(--amber-dark, #c07f1f);
+    }
+    .confirm-actions { display: flex; gap: 10px; margin-top: 4px; }
+    .confirm-actions .btn { flex: 1; }
+    .confirm-warning {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--crate-red, #c1432b);
+      margin-top: 14px;
+      text-align: center;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+function buildConfirmModal() {
+  if (document.getElementById("confirmOverlay")) return;
+  injectConfirmModalStyles();
+  const overlay = document.createElement("div");
+  overlay.className = "confirm-overlay";
+  overlay.id = "confirmOverlay";
+  overlay.innerHTML = `
+    <div class="confirm-modal" role="dialog" aria-modal="true" aria-label="Confirmar pedido">
+      <h3>Confirmá tu pedido</h3>
+      <p class="confirm-sub">Revisá que las cantidades sean correctas antes de enviarlo por WhatsApp.</p>
+      <ul class="confirm-list" id="confirmList"></ul>
+      <div class="confirm-total">
+        <span>Total</span>
+        <strong id="confirmTotal">$0</strong>
+      </div>
+      <div class="confirm-field">
+        <label for="confirmName">Nombre y apellido</label>
+        <input type="text" id="confirmName" placeholder="Ej: Juan Pérez" autocomplete="name">
+      </div>
+      <div class="confirm-actions">
+        <button class="btn btn--ghost" id="confirmCancelBtn" type="button">Volver a revisar</button>
+        <button class="btn btn--whatsapp" id="confirmSendBtn" type="button" style="flex:1.3;">Confirmar y enviar</button>
+      </div>
+      <p class="confirm-warning">Una vez enviado el pedido por WhatsApp, no podrá cancelarse y deberá abonar el total.</p>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closeConfirmModal();
+  });
+  document.getElementById("confirmCancelBtn").addEventListener("click", closeConfirmModal);
+  document.getElementById("confirmSendBtn").addEventListener("click", confirmAndSendOrder);
+}
+
+function openConfirmModal() {
+  if (cartCount() === 0) {
+    showToast("Tu pedido está vacío");
+    return;
+  }
+  buildConfirmModal();
+  const overlay = document.getElementById("confirmOverlay");
+  const list = document.getElementById("confirmList");
+
+  list.innerHTML = Object.entries(state.cart).map(([sku, qty]) => {
+    const prod = PRODUCTS.find((prd) => prd.sku === sku);
+    if (!prod) return "";
+    return `
+      <li>
+        <span><span class="qty">${qty}x</span><span class="name">${prod.nombre}</span></span>
+        <span class="subtotal">${money(prod.precio * qty)}</span>
+      </li>`;
+  }).join("");
+
+  document.getElementById("confirmTotal").textContent = money(cartTotal());
+
+  const nameInput = document.getElementById("confirmName");
+  nameInput.value = state.contactName || "";
+
+  overlay.classList.add("active");
+  document.body.style.overflow = "hidden";
+  setTimeout(() => nameInput.focus(), 50);
+}
+
+function closeConfirmModal() {
+  const overlay = document.getElementById("confirmOverlay");
+  if (!overlay) return;
+  overlay.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+function confirmAndSendOrder() {
+  const name = document.getElementById("confirmName").value.trim();
+  state.contactName = name;
+
+  const message = name
+    ? [`Nombre: ${name}`, "", buildOrderMessage()].join("\n")
+    : buildOrderMessage();
+
+  const url = buildWhatsappLink(message);
+  window.open(url, "_blank", "noopener");
+  closeConfirmModal();
+  closeCart();
+}
+
+/* ==========================================================================
    15) CARRITO — apertura / cierre
    ========================================================================== */
 function openCart() {
@@ -879,10 +1067,10 @@ function bindEvents() {
   document.getElementById("cartOverlay").addEventListener("click", closeCart);
   document.getElementById("cartEmptyLink").addEventListener("click", closeCart);
   document.getElementById("cartClearBtn").addEventListener("click", clearCart);
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") { closeCart(); closeNav(); } });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") { closeCart(); closeNav(); closeConfirmModal(); } });
 
-  // Enviar pedido por WhatsApp
-  document.getElementById("whatsappBtn").addEventListener("click", sendOrderToWhatsapp);
+  // Enviar pedido por WhatsApp → primero pasa por la pantalla de confirmación
+  document.getElementById("whatsappBtn").addEventListener("click", openConfirmModal);
 
   // Enlaces de Instagram (flotante + footer)
   [document.getElementById("floatingInstagram"), document.getElementById("footerInstagram")].forEach((el) => {
@@ -907,7 +1095,7 @@ function bindEvents() {
       // Si hay productos en el carrito, el botón de pedido del hero lo usa como pedido real.
       if (el.id === "heroOrderBtn" && cartCount() > 0) {
         e.preventDefault();
-        sendOrderToWhatsapp();
+        openConfirmModal();
       }
     });
   });
@@ -925,10 +1113,33 @@ function bindEvents() {
 }
 
 /* ==========================================================================
+   19.1) AJUSTES VISUALES DEL HERO (pedidos por el cliente)
+   - Oculta los dos cuadrados decorativos (naranja/azul) del hero.
+   - Tiñe de verde la marca de agua "BAUMAR" de fondo (antes gris).
+   Se hace por CSS inyectado para no tocar index.html/style.css.
+   ========================================================================== */
+function applyHeroTweaks() {
+  const style = document.createElement("style");
+  style.id = "heroTweaksStyles";
+  style.textContent = `
+    .hero__visual .crate,
+    .hero .crate--a,
+    .hero .crate--b {
+      display: none !important;
+    }
+    .hero::before {
+      filter: sepia(1) saturate(900%) hue-rotate(70deg) brightness(0.9) !important;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+/* ==========================================================================
    20) INIT
    ========================================================================== */
 function init() {
   document.getElementById("year").textContent = new Date().getFullYear();
+  applyHeroTweaks();
   renderCategories();
   renderBrandFilter();
   renderStats();
@@ -940,3 +1151,4 @@ function init() {
 }
 
 document.addEventListener("DOMContentLoaded", init);
+
