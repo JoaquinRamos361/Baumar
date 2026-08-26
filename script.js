@@ -937,24 +937,17 @@ function closeConfirmModal() {
 
 function confirmAndSendOrder() {
   const name = document.getElementById("confirmName").value.trim();
-  const day = document.getElementById("confirmDay").value;
   const city = document.getElementById("confirmCity").value.trim();
   const address = document.getElementById("confirmAddress").value.trim();
   const crossStreets = document.getElementById("confirmCrossStreets").value.trim();
 
   state.contactName = name;
-  state.contactDay = day;
   state.contactCity = city;
   state.contactAddress = address;
   state.contactCrossStreets = crossStreets;
 
-  const dayFormatted = day
-    ? new Date(day + "T00:00:00").toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long" })
-    : "";
-
   const infoLines = [];
   if (name) infoLines.push(`Nombre: ${name}`);
-  if (dayFormatted) infoLines.push(`Día de entrega: ${dayFormatted}`);
   if (city) infoLines.push(`Ciudad: ${city}`);
   if (address) infoLines.push(`Dirección: ${address}`);
   if (crossStreets) infoLines.push(`Entre calles: ${crossStreets}`);
