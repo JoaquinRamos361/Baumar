@@ -846,13 +846,6 @@ function injectConfirmModalStyles() {
     }
     .confirm-actions { display: flex; gap: 10px; margin-top: 4px; }
     .confirm-actions .btn { flex: 1; }
-    .confirm-warning {
-      font-size: 12.5px;
-      font-weight: 600;
-      color: var(--crate-red, #c1432b);
-      margin-top: 14px;
-      text-align: center;
-    }
   `;
   document.head.appendChild(style);
 }
@@ -876,11 +869,22 @@ function buildConfirmModal() {
         <label for="confirmName">Nombre y apellido</label>
         <input type="text" id="confirmName" placeholder="Ej: Juan Pérez" autocomplete="name">
       </div>
+      <div class="confirm-field">
+        <label for="confirmCity">Ciudad</label>
+        <input type="text" id="confirmCity" placeholder="Ej: Burzaco" autocomplete="address-level2">
+      </div>
+      <div class="confirm-field">
+        <label for="confirmAddress">Dirección exacta</label>
+        <input type="text" id="confirmAddress" placeholder="Ej: Av. Siempre Viva 742" autocomplete="street-address">
+      </div>
+      <div class="confirm-field">
+        <label for="confirmCrossStreets">Entre calles</label>
+        <input type="text" id="confirmCrossStreets" placeholder="Ej: entre San Martín y Belgrano">
+      </div>
       <div class="confirm-actions">
         <button class="btn btn--ghost" id="confirmCancelBtn" type="button">Volver a revisar</button>
         <button class="btn btn--whatsapp" id="confirmSendBtn" type="button" style="flex:1.3;">Confirmar y enviar</button>
       </div>
-      <p class="confirm-warning">Una vez enviado el pedido por WhatsApp, no podrá cancelarse y deberá abonar el total.</p>
     </div>
   `;
   document.body.appendChild(overlay);
@@ -915,6 +919,9 @@ function openConfirmModal() {
 
   const nameInput = document.getElementById("confirmName");
   nameInput.value = state.contactName || "";
+  document.getElementById("confirmCity").value = state.contactCity || "";
+  document.getElementById("confirmAddress").value = state.contactAddress || "";
+  document.getElementById("confirmCrossStreets").value = state.contactCrossStreets || "";
 
   overlay.classList.add("active");
   document.body.style.overflow = "hidden";
@@ -930,10 +937,30 @@ function closeConfirmModal() {
 
 function confirmAndSendOrder() {
   const name = document.getElementById("confirmName").value.trim();
-  state.contactName = name;
+  const day = document.getElementById("confirmDay").value;
+  const city = document.getElementById("confirmCity").value.trim();
+  const address = document.getElementById("confirmAddress").value.trim();
+  const crossStreets = document.getElementById("confirmCrossStreets").value.trim();
 
-  const message = name
-    ? [`Nombre: ${name}`, "", buildOrderMessage()].join("\n")
+  state.contactName = name;
+  state.contactDay = day;
+  state.contactCity = city;
+  state.contactAddress = address;
+  state.contactCrossStreets = crossStreets;
+
+  const dayFormatted = day
+    ? new Date(day + "T00:00:00").toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long" })
+    : "";
+
+  const infoLines = [];
+  if (name) infoLines.push(`Nombre: ${name}`);
+  if (dayFormatted) infoLines.push(`Día de entrega: ${dayFormatted}`);
+  if (city) infoLines.push(`Ciudad: ${city}`);
+  if (address) infoLines.push(`Dirección: ${address}`);
+  if (crossStreets) infoLines.push(`Entre calles: ${crossStreets}`);
+
+  const message = infoLines.length
+    ? [...infoLines, "", buildOrderMessage()].join("\n")
     : buildOrderMessage();
 
   const url = buildWhatsappLink(message);
@@ -1115,7 +1142,8 @@ function bindEvents() {
 /* ==========================================================================
    19.1) AJUSTES VISUALES DEL HERO (pedidos por el cliente)
    - Oculta los dos cuadrados decorativos (naranja/azul) del hero.
-   - Tiñe de verde la marca de agua "BAUMAR" de fondo (antes gris).
+   - Letras de la marca de agua "BAUMAR": color original (gris, sin tinte).
+   - Fondo del hero: verde oscuro (el mismo tono que antes usábamos en las letras).
    Se hace por CSS inyectado para no tocar index.html/style.css.
    ========================================================================== */
 function applyHeroTweaks() {
@@ -1128,9 +1156,15 @@ function applyHeroTweaks() {
       display: none !important;
     }
     .hero::before {
-      /* grayscale() primero anula cualquier color original de la imagen,
-         así el tinte verde queda garantizado sin importar el tono de base */
-      filter: grayscale(1) sepia(1) saturate(700%) hue-rotate(45deg) brightness(1) contrast(1.15) !important;
+      /* letras claras/blancas (como el original), fondo verde */
+      filter: saturate(0) !important;
+    }
+    .hero {
+      /* fondo verde oscuro en vez del negro original */
+      background:
+        radial-gradient(circle at 14% 18%, rgba(232, 162, 60, 0.10), transparent 46%),
+        radial-gradient(circle at 88% 82%, rgba(61, 74, 92, 0.25), transparent 50%),
+        linear-gradient(180deg, #0d1f14 0%, #123524 55%, #16402c 100%) !important;
     }
   `;
   document.head.appendChild(style);
