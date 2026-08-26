@@ -1135,8 +1135,11 @@ function bindEvents() {
 /* ==========================================================================
    19.1) AJUSTES VISUALES DEL HERO (pedidos por el cliente)
    - Oculta los dos cuadrados decorativos (naranja/azul) del hero.
-   - Letras de la marca de agua "BAUMAR": color original (gris, sin tinte).
-   - Fondo del hero: verde oscuro (el mismo tono que antes usábamos en las letras).
+   - La marca de agua "BAUMAR" ya no lleva ningún filtro de color: se deja
+     tal cual es la imagen (fondo verde sólido + letras blancas), para que
+     se funda con el fondo del hero en vez de notarse como un recuadro.
+   - Fondo del hero: el mismo verde plano que el logo-fondo.png (#6f9633),
+     sin degradé, para que no haya bordes visibles alrededor de la imagen.
    Se hace por CSS inyectado para no tocar index.html/style.css.
    ========================================================================== */
 function applyHeroTweaks() {
@@ -1149,15 +1152,24 @@ function applyHeroTweaks() {
       display: none !important;
     }
     .hero::before {
-      /* letras claras/blancas (como el original), fondo verde */
-      filter: saturate(0) !important;
+      /* sin filtro: mismo verde que el fondo, no se nota el recuadro */
+      filter: none !important;
+      opacity: 0.9 !important;
     }
     .hero {
-      /* fondo verde oscuro en vez del negro original */
-      background:
-        radial-gradient(circle at 14% 18%, rgba(232, 162, 60, 0.10), transparent 46%),
-        radial-gradient(circle at 88% 82%, rgba(61, 74, 92, 0.25), transparent 50%),
-        linear-gradient(180deg, #0d1f14 0%, #123524 55%, #16402c 100%) !important;
+      /* mismo verde plano que trae el logo-fondo.png */
+      background: #6f9633 !important;
+    }
+    .hero__title {
+      /* mismo criterio que el subtítulo: oscuro para que no se pierda
+         donde el texto pisa las letras blancas de la marca de agua */
+      color: #12190c !important;
+    }
+    .hero__subtitle {
+      /* oscuro en vez de blanco: así contrasta tanto contra el verde
+         como contra las letras blancas de la marca de agua */
+      color: #12190c !important;
+      text-shadow: none !important;
     }
   `;
   document.head.appendChild(style);
@@ -1180,3 +1192,5 @@ function init() {
 }
 
 document.addEventListener("DOMContentLoaded", init);
+
+
