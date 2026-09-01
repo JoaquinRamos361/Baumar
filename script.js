@@ -1,4 +1,4 @@
-* ==========================================================================
+/* ==========================================================================
    BAUMAR — Distribuidora Mayorista
    script.js — datos de productos, catálogo dinámico, carrito y WhatsApp
    ========================================================================== */
@@ -196,13 +196,13 @@ const PRODUCTS = [
   p("Vodka SERNOVA Wild Berries x 700ml", "Sernova", "bebidas-alcohol", 6900, 6900, 1, "Vodka SERNOVA Wild Berries x 700ml — bulto x6", "vodka-sernova-wild-berries-x-700ml", {}),
   p("Vodka SERNOVA Sweet Apple x 700ml", "Sernova", "bebidas-alcohol", 6900, 6900, 1, "Vodka SERNOVA Sweet Apple x 700ml — bulto x6", "vodka-sernova-sweet-apple-x-700ml", {}),
   p("Vodka SERNOVA Trop.Passion x 700ml", "Sernova", "bebidas-alcohol", 6900, 6900, 1, "Vodka SERNOVA Trop.Passion x 700ml — bulto x6", "vodka-sernova-trop-passion-x-700ml", {}),
-  p("Alfajores Guaymallen Chocolate", "Alfajores", "galletitas", 11150, 278.75, 40, "Alfajores Guaymallen Chocolate — bulto x40", "alfajores-guaymallen-chocolate", {}),
-  p("Alfajor Guaymallen Blanco", "Alfajores", "galletitas", 11150, 278.75, 40, "Alfajor Guaymallen Blanco — bulto x40", "alfajores-guaymallen-dulce-de-leche", {}),
-  p("Alfajores Guaymallen TRIPLE Chocolate", "Triple", "galletitas", 9970, 415.42, 24, "Alfajores Guaymallen TRIPLE Chocolate — bulto x24", "alfajores-guaymallen-triple-chocolate", {}),
-  p("Alfajores Guaymallen TRIPLE Blanco", "Triple", "galletitas", 9970, 415.42, 24, "Alfajores Guaymallen TRIPLE Blanco — bulto x24", "alfajores-guaymallen-triple-dulce-de", {}),
-  p("Alfajor Capitan del Espacio Chocolate", "Alfajor", "galletitas", 43900, 1219.44, 36, "Alfajor Capitan del Espacio Chocolate — bulto x36", "alfajor-capitan-del-espacio-chocolate", {}),
-  p("Alfajor Capitan del Espacio Dulce de Leche", "Alfajor", "galletitas", 43900, 1219.44, 36, "Alfajor Capitan del Espacio Dulce de Leche — bulto x36", "alfajor-capitan-del-espacio-dulce-de", {}),
-  p("Alfajor Capitan del Espacio TRIPLE", "Triple", "galletitas", 44500, 1854.17, 24, "Alfajor Capitan del Espacio TRIPLE — bulto x24", "alfajor-capitan-del-espacio-triple", {}),
+  p("Alfajor Guaymallen Chocolate", "Alfajores", "galletitas", 11150, 278.75, 40, "Alfajores Guaymallen Chocolate — bulto x40", "alfajores-guaymallen-chocolate", {}),
+  p("Alfajor Guaymallen Blanco", "Alfajores", "galletitas", 11150, 278.75, 40, "Alfajores Guaymallen Blanco — bulto x40", "alfajores-guaymallen-blanco", {}),
+  p("Alfajor Guaymallen TRIPLE Chocolate", "Triple", "galletitas", 9970, 415.42, 24, "Alfajores Guaymallen TRIPLE Chocolate — bulto x24", "alfajores-guaymallen-triple-chocolate", {}),
+  p("Alfajor Guaymallen TRIPLE Blanco", "Triple", "galletitas", 9970, 415.42, 24, "Alfajores Guaymallen TRIPLE Blanco — bulto x24", "alfajores-guaymallen-triple-dulce-de", {}),
+  p("Alfajor Capitan del Espacio Chocolate", "Alfajor", "galletitas", 43900, 1219.44, 36, "Alfajores Capitan del Espacio Chocolate — bulto x36", "alfajor-capitan-del-espacio-chocolate", {}),
+  p("Alfajor Capitan del Espacio Dulce de Leche", "Alfajor", "galletitas", 43900, 1219.44, 36, "Alfajores Capitan del Espacio Dulce de Leche — bulto x36", "alfajor-capitan-del-espacio-dulce-de", {}),
+  p("Alfajor Capitan del Espacio TRIPLE", "Triple", "galletitas", 44500, 1854.17, 24, "Alfajores Capitan del Espacio TRIPLE — bulto x24", "alfajor-capitan-del-espacio-triple", {}),
   p("Don Satur Bizcochos X 200GRS", "Don", "galletitas", 1110, 1110, 1, "Don Satur Bizcochos X 200GRS — bulto x30", "don-satur-bizcochos-x-200grs", {}),
   p("Don Satur Agridulce X 200GRS", "Don", "galletitas", 1110, 1110, 1, "Don Satur Agridulce X 200GRS — bulto x30", "don-satur-agridulce-x-200grs", {}),
   p("Don Satur Negritas X 200GRS", "Don", "galletitas", 1110, 1110, 1, "Don Satur Negritas X 200GRS — bulto x30", "don-satur-negritas-x-200grs", {}),
@@ -1248,5 +1248,3 @@ function init() {
 }
 
 document.addEventListener("DOMContentLoaded", init);
-
-
