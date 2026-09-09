@@ -20,7 +20,7 @@ const INSTAGRAM_URL = "https://instagram.com/baumardistribuidora";
 
 // Alias de transferencia bancaria que se muestra cuando el cliente elige "Transferencia" como método de pago.
 // IMPORTANTE: reemplazar por el alias real antes de publicar el sitio.
-const TRANSFER_ALIAS = "COMPLETAR.ALIAS.ACA";
+const TRANSFER_ALIAS = "TRANVI.CLASE.DUQUE";
 
 /* ==========================================================================
    2) CATEGORÍAS
@@ -69,13 +69,13 @@ const CATEGORY_ICONS = {
    ========================================================================== */
 const PRODUCTS = [
   p("Vino Tinto Toro", "Toro", "vinos-espumantes", 20910, 1742.50, 12, "Tetra Brik 1 L", "toro-tinto-1l", { destacado: true }),
-  p("Vino Tinto Huellapampa Malbec", "Huellapampa", "vinos-espumantes", 15600, 2600, 6, "Botella 750 ml", "huellapampa-malbec-750", { destacado: true, etiqueta: "nuevo" }),
+  p("Vino Tinto Huellapampa Malbec", "Huellapampa", "vinos-espumantes", 16950, 2825, 6, "Botella 750 ml", "huellapampa-malbec-750", { destacado: true, etiqueta: "nuevo" }),
   p("Vino Tinto Uvita", "Uvita", "vinos-espumantes", 13600, 2266.67, 6, "Botella 1,125 L", "uvita-tinto-1125", { destacado: true, etiqueta: "oferta" }),
   p("Jugo de Naranja 100% Exprimido", "Baggio", "bebidas-sin-alcohol", 32400, 2700, 12, "Tetra Pak 1 L", "baggio-naranja-1l", { destacado: true, etiqueta: "oferta" }),
   p("Agua de mesa FRESH x 600CC", "Fresh", "bebidas-sin-alcohol", 3100, 516.67, 6, "Agua de mesa FRESH x 600CC — bulto x6", "agua-de-mesa-fresh-x-600cc", {}),
   p("Agua de mesa FRESH x 1.5L", "Fresh", "bebidas-sin-alcohol", 4500, 750, 6, "Agua de mesa FRESH x 1.5L — bulto x6", "agua-de-mesa-fresh-x-1-5l", {}),
-  p("Agua de mesa FRESH x 6.5L", "Fresh", "bebidas-sin-alcohol", 3910, 1955, 2, "Agua de mesa FRESH x 6.5L — bulto x2", "agua-de-mesa-fresh-x-6-5l", {}),
-  p("Agua VIDA By BAGGIO x 1.5L", "Vida", "bebidas-sin-alcohol", 5000, 833.33, 6, "Agua VIDA By BAGGIO x 1.5L — bulto x6", "agua-vida-by-baggio-x-1-5l", {}),
+  p("Agua de mesa FRESH x 6.5L", "Fresh", "bebidas-sin-alcohol", 3900, 1950, 2, "Agua de mesa FRESH x 6.5L — bulto x2", "agua-de-mesa-fresh-x-6-5l", {}),
+  p("Agua VIDA By BAGGIO x 1.5L", "Vida", "bebidas-sin-alcohol", 4500, 750, 6, "Agua VIDA By BAGGIO x 1.5L — bulto x6", "agua-vida-by-baggio-x-1-5l", {}),
   p("BAGGIO PRONTO x 1,5 Lts Multifruta", "Baggio", "bebidas-sin-alcohol", 15970, 1996.25, 8, "BAGGIO PRONTO x 1,5 Lts Multifruta — bulto x8", "baggio-pronto-x-1-5-lts-multifruta", {}),
   p("BAGGIO PRONTO x 1,5 Lts Naranja", "Baggio", "bebidas-sin-alcohol", 15970, 1996.25, 8, "BAGGIO PRONTO x 1,5 Lts Naranja — bulto x8", "baggio-pronto-x-1-5-lts-naranja", {}),
   p("BAGGIO PRONTO x 1Lts Naranja", "Baggio", "bebidas-sin-alcohol", 12500, 1562.50, 8, "BAGGIO PRONTO x 1Lts Naranja — bulto x8", "baggio-pronto-x-1lts-naranja", {}),
@@ -85,20 +85,20 @@ const PRODUCTS = [
   p("BAGGIO PRONTO x 200cc Naranja", "Baggio", "bebidas-sin-alcohol", 8300, 461.11, 18, "BAGGIO PRONTO x 200cc Naranja — bulto x18", "baggio-pronto-x-200cc-naranja", {}),
   p("BAGGIO PRONTO x 200cc Pera", "Baggio", "bebidas-sin-alcohol", 0, 0, 18, "BAGGIO PRONTO x 200cc Pera — bulto x18", "baggio-pronto-x-200cc-pera", { etiqueta: "sin-stock" }),
   p("BAGGIO PRONTO x 200cc Durazno", "Baggio", "bebidas-sin-alcohol", 8300, 461.11, 18, "BAGGIO PRONTO x 200cc Durazno — bulto x18", "baggio-pronto-x-200cc-durazno", {}),
-  p("BAGGIO FRESH LIVIANO Naranja x 200cc", "Baggio", "bebidas-sin-alcohol", 8300, 461.11, 18, "BAGGIO FRESH LIVIANO Naranja x 200cc — bulto x18", "baggio-fresh-liviano-naranja-x-200cc", {}),
+  p("BAGGIO FRESH LIVIANO Naranja x 200cc", "Baggio", "bebidas-sin-alcohol", 5870, 326.11, 18, "BAGGIO FRESH LIVIANO Naranja x 200cc — bulto x18", "baggio-fresh-liviano-naranja-x-200cc", {}),
   p("BAGGIO FRESH GASEOSA x 2.25Lts Cola", "Baggio", "bebidas-sin-alcohol", 8100, 1350, 6, "BAGGIO FRESH GASEOSA x 2.25Lts Cola — bulto x6", "baggio-fresh-gaseosa-x-2-25lts-cola", {}),
   p("BAGGIO FRESH GASEOSA x 2.25Lts Lima", "Baggio", "bebidas-sin-alcohol", 8100, 1350, 6, "BAGGIO FRESH GASEOSA x 2.25Lts Lima — bulto x6", "baggio-fresh-gaseosa-x-2-25lts-lima", {}),
   p("BAGGIO FRESH GASEOSA x 2.25Lts Naranja", "Baggio", "bebidas-sin-alcohol", 8100, 1350, 6, "BAGGIO FRESH GASEOSA x 2.25Lts Naranja — bulto x6", "baggio-fresh-gaseosa-x-2-25lts-naranja", {}),
   p("BAGGIO FRESH GASEOSA x 2.25Lts Pomelo", "Baggio", "bebidas-sin-alcohol", 8100, 1350, 6, "BAGGIO FRESH GASEOSA x 2.25Lts Pomelo — bulto x6", "baggio-fresh-gaseosa-x-2-25lts-pomelo", {}),
   p("BAGGIO FRESH GASEOSA x 2.25Lts Citrus", "Baggio", "bebidas-sin-alcohol", 0, 0, 6, "BAGGIO FRESH GASEOSA x 2.25Lts Citrus — bulto x6", "baggio-fresh-gaseosa-x-2-25lts-citrus", { etiqueta: "sin-stock" }),
   p("BAGGIO LATTE Leche entera x 200cc", "Baggio", "bebidas-sin-alcohol", 6780, 376.67, 18, "BAGGIO LATTE Leche entera x 200cc — bulto x18", "baggio-latte-leche-entera-x-200cc", {}),
-  p("BAGGIO LATTE Leche entera x 1Lts", "Baggio", "bebidas-sin-alcohol", 12990, 1623.75, 8, "BAGGIO LATTE Leche entera x 1Lts — bulto x8", "baggio-latte-leche-entera-x-1lts", {}),
-  p("BAGGIO LATTE Leche Chocolatada x 200cc", "Baggio", "bebidas-sin-alcohol", 6000, 333.33, 18, "BAGGIO LATTE Leche Chocolatada x 200cc — bulto x18", "baggio-latte-leche-chocolatada-x-200cc", {}),
+  p("BAGGIO LATTE Leche entera x 1Lts", "Baggio", "bebidas-sin-alcohol", 0, 0, 8, "BAGGIO LATTE Leche entera x 1Lts — bulto x8", "baggio-latte-leche-entera-x-1lts", { etiqueta: "sin-stock" }),
+  p("BAGGIO LATTE Leche Chocolatada x 200cc", "Baggio", "bebidas-sin-alcohol", 0, 0, 18, "BAGGIO LATTE Leche Chocolatada x 200cc — bulto x18", "baggio-latte-leche-chocolatada-x-200cc", { etiqueta: "sin-stock" }),
   p("BAGGIO FORZA 500cc", "Baggio", "bebidas-sin-alcohol", 6200, 1033.33, 6, "BAGGIO FORZA 500cc — bulto x6", "baggio-forza-500cc", {}),
-  p("Coca Cola x 2.25Lts", "Coca", "bebidas-sin-alcohol", 10050, 1675, 6, "Coca Cola x 2.25Lts — bulto x6", "coca-cola-x-2-25lts", {}),
-  p("Fanta x 2.25Lts", "Coca", "bebidas-sin-alcohol", 10050, 1675, 6, "Fanta x 2.25Lts — bulto x6", "fanta-x-2-25lts", {}),
-  p("Sprite x 2.25Lts", "Coca", "bebidas-sin-alcohol", 10050, 1675, 6, "Sprite x 2.25Lts — bulto x6", "sprite-x-2-25lts", {}),
-  p("Coca Light/Cero x 2.25Lts", "Coca", "bebidas-sin-alcohol", 10050, 1675, 6, "Coca Light/Cero x 2.25Lts — bulto x6", "coca-light-cero-x-2-25lts", {}),
+  p("Coca Cola x 2.25Lts", "Coca", "bebidas-sin-alcohol", 27480, 4580, 6, "Coca Cola x 2.25Lts — bulto x6", "coca-cola-x-2-25lts", {}),
+  p("Fanta x 2.25Lts", "Coca", "bebidas-sin-alcohol", 27480, 4580, 6, "Fanta x 2.25Lts — bulto x6", "fanta-x-2-25lts", {}),
+  p("Sprite x 2.25Lts", "Coca", "bebidas-sin-alcohol", 27480, 4580, 6, "Sprite x 2.25Lts — bulto x6", "sprite-x-2-25lts", {}),
+  p("Coca Light/Cero x 2.25Lts", "Coca", "bebidas-sin-alcohol", 27480, 4580, 6, "Coca Light/Cero x 2.25Lts — bulto x6", "coca-light-cero-x-2-25lts", {}),
   p("Coca Cola x 1.5Lts", "Coca", "bebidas-sin-alcohol", 29690, 3711.25, 8, "Coca Cola x 1.5Lts — bulto x8", "coca-cola-x-1-5lts", {}),
   p("Fanta x 1.5Lts", "Coca", "bebidas-sin-alcohol", 29690, 3711.25, 8, "Fanta x 1.5Lts — bulto x8", "fanta-x-1-5lts", {}),
   p("Sprite x 1.5Lts", "Coca", "bebidas-sin-alcohol", 29690, 3711.25, 8, "Sprite x 1.5Lts — bulto x8", "sprite-x-1-5lts", {}),
@@ -122,8 +122,8 @@ const PRODUCTS = [
   p("FRESH x 600cc Pomelo", "Fresh", "bebidas-sin-alcohol", 4780, 796.67, 6, "FRESH x 600cc Pomelo — bulto x6", "fresh-x-600cc-pomelo", {}),
   p("FRESH x 600cc Manzana", "Fresh", "bebidas-sin-alcohol", 4780, 796.67, 6, "FRESH x 600cc Manzana — bulto x6", "fresh-x-600cc-manzana", {}),
   p("FRESH x 600cc Cero", "Fresh", "bebidas-sin-alcohol", 4780, 796.67, 6, "FRESH x 600cc Cero — bulto x6", "fresh-x-600cc-cero", {}),
-  p("POWERADE x 500cc", "Powerade", "bebidas-sin-alcohol", 65280, 10880, 6, "POWERADE x 500cc — bulto x6", "powerade-x-500cc", {}),
-  p("POWERADE x 995cc", "Powerade", "bebidas-sin-alcohol", 111360.01, 18560, 6, "POWERADE x 995cc — bulto x6", "powerade-x-995cc", {}),
+  p("POWERADE x 500cc", "Powerade", "bebidas-sin-alcohol", 10880, 1813.33, 6, "POWERADE x 500cc — bulto x6", "powerade-x-500cc", {}),
+  p("POWERADE x 995cc", "Powerade", "bebidas-sin-alcohol", 18560, 3093.33, 6, "POWERADE x 995cc — bulto x6", "powerade-x-995cc", {}),
   p("Prep. MOCORETA (NARANJA) 1,5Lts", "Mocoreta", "bebidas-sin-alcohol", 8700, 1450, 6, "Prep. MOCORETA (NARANJA) 1,5Lts — bulto x6", "prep-mocoreta-naranja-1-5lts", {}),
   p("SPEED x 250cc", "Speed", "bebidas-sin-alcohol", 32540, 1355.83, 24, "SPEED x 250cc — bulto x24", "speed-x-250cc", {}),
   p("SPEED XL 473cc", "Speed", "bebidas-sin-alcohol", 26870, 2239.17, 12, "SPEED XL 473cc — bulto x12", "speed-xl-473cc", {}),
@@ -134,20 +134,21 @@ const PRODUCTS = [
   p("ISENBECK Lata 473", "Isenbeck", "cervezas", 37500, 1562.50, 24, "ISENBECK Lata 473 — bulto x24", "isenbeck-lata-473", {}),
   p("AMSTEL Lata 473", "Amstel", "cervezas", 36000, 1500, 24, "AMSTEL Lata 473 — bulto x24", "amstel-lata-473", {}),
   p("SCHNEIDER Lata 473cc", "Schneider", "cervezas", 36500, 1520.83, 24, "SCHNEIDER Lata 473cc — bulto x24", "schneider-lata-473cc", {}),
-  p("AS DE PICAS Malbec 750ml", "Picas", "vinos-espumantes", 18370, 3061.67, 6, "AS DE PICAS Malbec 750ml — bulto x6", "as-de-picas-malbec-750ml", {}),
+  p("BRAHMA Lata 473cc", "Brahma", "cervezas", 44000, 1833.33, 24, "BRAHMA Lata 473cc — bulto x24", "brahma-lata-473cc", {}),
+  p("AS DE PICAS Malbec 750ml", "Picas", "vinos-espumantes", 19950, 3325, 6, "AS DE PICAS Malbec 750ml — bulto x6", "as-de-picas-malbec-750ml", {}),
   p("BODEGA PRIVADA TRADICIONAL Malbec 750cc", "Bodega", "vinos-espumantes", 20000, 3333.33, 6, "BODEGA PRIVADA TRADICIONAL Malbec 750cc — bulto x6", "bodega-privada-tradicional-malbec-750cc", {}),
   p("BODEGA PRIVADA TRADICIONAL Cabernet 750cc", "Bodega", "vinos-espumantes", 20000, 3333.33, 6, "BODEGA PRIVADA TRADICIONAL Cabernet 750cc — bulto x6", "bodega-privada-tradicional-cabernet", {}),
   p("BODEGA PRIVADA COLECCIÓN 750cc", "Bodega", "vinos-espumantes", 20600, 3433.33, 6, "BODEGA PRIVADA COLECCIÓN 750cc — bulto x6", "bodega-privada-coleccion-750cc", {}),
   p("CANCILLER BLEND Tinto x 750ml", "Canciller", "vinos-espumantes", 15910, 2651.67, 6, "CANCILLER BLEND Tinto x 750ml — bulto x6", "canciller-blend-tinto-x-750ml", {}),
   p("CANCILLER BLANCO DULCE 1125ml", "Canciller", "vinos-espumantes", 15930, 2655, 6, "CANCILLER BLANCO DULCE 1125ml — bulto x6", "canciller-blanco-dulce-1125ml", {}),
-  p("CANCILLER XXV BLEND DULCE x 750ml (ESPUMOSO)", "Canciller", "vinos-espumantes", 106800.01, 17800, 6, "CANCILLER XXV BLEND DULCE x 750ml (ESPUMOSO) — bulto x6", "canciller-xxv-blend-dulce-x-750ml-espumo", {}),
-  p("CANCILLER XXV EXTRA BRUT x 750ml", "Canciller", "vinos-espumantes", 106800.01, 17800, 6, "CANCILLER XXV EXTRA BRUT x 750ml — bulto x6", "canciller-xxv-extra-brut-x-750ml", {}),
-  p("CENIZA NEGRA Malbec 750ml", "Ceniza", "vinos-espumantes", 15820, 2636.67, 6, "CENIZA NEGRA Malbec 750ml — bulto x6", "ceniza-negra-malbec-750ml", {}),
-  p("CENIZA NEGRA Chenin Dulce 750ml", "Ceniza", "vinos-espumantes", 15820, 2636.67, 6, "CENIZA NEGRA Chenin Dulce 750ml — bulto x6", "ceniza-negra-chenin-dulce-750ml", {}),
-  p("DILEMA Malbec 750ml", "Dilema", "vinos-espumantes", 78000, 13000, 6, "DILEMA Malbec 750ml — bulto x6", "dilema-malbec-750ml", {}),
+  p("CANCILLER XXV BLEND DULCE x 750ml (ESPUMOSO)", "Canciller", "vinos-espumantes", 17800, 2966.67, 6, "CANCILLER XXV BLEND DULCE x 750ml (ESPUMOSO) — bulto x6", "canciller-xxv-blend-dulce-x-750ml-espumo", {}),
+  p("CANCILLER XXV EXTRA BRUT x 750ml", "Canciller", "vinos-espumantes", 17800, 2966.67, 6, "CANCILLER XXV EXTRA BRUT x 750ml — bulto x6", "canciller-xxv-extra-brut-x-750ml", {}),
+  p("CENIZA NEGRA Malbec 750ml", "Ceniza", "vinos-espumantes", 18230, 3038.33, 6, "CENIZA NEGRA Malbec 750ml — bulto x6", "ceniza-negra-malbec-750ml", {}),
+  p("CENIZA NEGRA Chenin Dulce 750ml", "Ceniza", "vinos-espumantes", 17180, 2863.33, 6, "CENIZA NEGRA Chenin Dulce 750ml — bulto x6", "ceniza-negra-chenin-dulce-750ml", {}),
+  p("DILEMA Malbec 750ml", "Dilema", "vinos-espumantes", 16800, 2800, 6, "DILEMA Malbec 750ml — bulto x6", "dilema-malbec-750ml", {}),
   p("DILEMA Dulce Natural Blanco x 750ml", "Dilema", "vinos-espumantes", 18200, 3033.33, 6, "DILEMA Dulce Natural Blanco x 750ml — bulto x6", "dilema-dulce-natural-blanco-x-750ml", {}),
   p("DILEMA Dulce Natural Rosado x 750ml", "Dilema", "vinos-espumantes", 18200, 3033.33, 6, "DILEMA Dulce Natural Rosado x 750ml — bulto x6", "dilema-dulce-natural-rosado-x-750ml", {}),
-  p("EL ESTANCIERO Malbec 750ml", "Estanciero", "vinos-espumantes", 16810, 2801.67, 6, "EL ESTANCIERO Malbec 750ml — bulto x6", "el-estanciero-malbec-750ml", {}),
+  p("EL ESTANCIERO Malbec 750ml", "Estanciero", "vinos-espumantes", 19090, 3181.67, 6, "EL ESTANCIERO Malbec 750ml — bulto x6", "el-estanciero-malbec-750ml", {}),
   p("ESTANCIA MENDOZA - Bivarietales CAB-MAL x 750ml", "Estancia", "vinos-espumantes", 15640, 2606.67, 6, "ESTANCIA MENDOZA - Bivarietales CAB-MAL x 750ml — bulto x6", "estancia-mendoza-bivarietales-cab-mal-x", {}),
   p("ESTANCIA MENDOZA Blanco x 750ml", "Estancia", "vinos-espumantes", 15820, 2636.67, 6, "ESTANCIA MENDOZA Blanco x 750ml — bulto x6", "estancia-mendoza-blanco-x-750ml", {}),
   p("ESTANCIA MENDOZA Blanco Dulce x 750ml", "Estancia", "vinos-espumantes", 15820, 2636.67, 6, "ESTANCIA MENDOZA Blanco Dulce x 750ml — bulto x6", "estancia-mendoza-blanco-dulce-x-750ml", {}),
@@ -160,7 +161,7 @@ const PRODUCTS = [
   p("MANOJO DE UVAS Tetra Tinto x 1Lts", "Manojo", "vinos-espumantes", 17690, 1474.17, 12, "MANOJO DE UVAS Tetra Tinto x 1Lts — bulto x12", "manojo-de-uvas-tetra-tinto-x-1lts", {}),
   p("MANOJO DE UVAS Tetra Blanco x 1Lts", "Manojo", "vinos-espumantes", 15310, 1275.83, 12, "MANOJO DE UVAS Tetra Blanco x 1Lts — bulto x12", "manojo-de-uvas-tetra-blanco-x-1lts", {}),
   p("MOSCATO PROMESA x 700ml", "Moscato", "vinos-espumantes", 17040, 2840, 6, "MOSCATO PROMESA x 700ml — bulto x6", "moscato-promesa-x-700ml", {}),
-  p("NATIVO Tinto Tetra X 1Lts", "Nativo", "vinos-espumantes", 20910, 1742.50, 12, "NATIVO Tinto Tetra X 1Lts — bulto x12", "nativo-tinto-tetra-x-1lts", {}),
+  p("NATIVO Tinto Tetra X 1Lts", "Nativo", "vinos-espumantes", 17400, 1450, 12, "NATIVO Tinto Tetra X 1Lts — bulto x12", "nativo-tinto-tetra-x-1lts", {}),
   p("NINA GOLD Cabernet Franc 750ml", "Nina", "vinos-espumantes", 33010, 5501.67, 6, "NINA GOLD Cabernet Franc 750ml — bulto x6", "nina-gold-cabernet-franc-750ml", {}),
   p("NINA GOLD Cab-Malbec 750ml", "Nina", "vinos-espumantes", 33010, 5501.67, 6, "NINA GOLD Cab-Malbec 750ml — bulto x6", "nina-gold-cab-malbec-750ml", {}),
   p("NINA GOLD Malbec 750ml", "Nina", "vinos-espumantes", 33010, 5501.67, 6, "NINA GOLD Malbec 750ml — bulto x6", "nina-gold-malbec-750ml", {}),
@@ -168,26 +169,26 @@ const PRODUCTS = [
   p("RESERO Tinto x 1125ml", "Resero", "vinos-espumantes", 11645, 1940.83, 6, "RESERO Tinto x 1125ml — bulto x6", "resero-tinto-x-1125ml", {}),
   p("RESERO Blanco Dulce x 1125ml", "Resero", "vinos-espumantes", 11645, 1940.83, 6, "RESERO Blanco Dulce x 1125ml — bulto x6", "resero-blanco-dulce-x-1125ml", {}),
   p("RESERO Tetra Tinto x 1Lts", "Resero", "vinos-espumantes", 20040, 1670, 12, "RESERO Tetra Tinto x 1Lts — bulto x12", "resero-tetra-tinto-x-1lts", {}),
-  p("RESERO Tetra Blanco x 1Lts", "Resero", "vinos-espumantes", 13930, 1160.83, 12, "RESERO Tetra Blanco x 1Lts — bulto x12", "resero-tetra-blanco-x-1lts", {}),
+  p("RESERO Tetra Blanco x 1Lts", "Resero", "vinos-espumantes", 17280, 1440, 12, "RESERO Tetra Blanco x 1Lts — bulto x12", "resero-tetra-blanco-x-1lts", {}),
   p("RICORDI Espumante Brut Nature 750ML", "Ricordi", "vinos-espumantes", 40010, 6668.33, 6, "RICORDI Espumante Brut Nature 750ML — bulto x6", "ricordi-espumante-brut-nature-750ml", {}),
   p("SAN HUBERTO CLASICO Malbec 750ml", "San", "vinos-espumantes", 14930, 2488.33, 6, "SAN HUBERTO CLASICO Malbec 750ml — bulto x6", "san-huberto-clasico-malbec-750ml", {}),
   p("SAN HUBERTO CLASICO Cabernet 750ml", "San", "vinos-espumantes", 14930, 2488.33, 6, "SAN HUBERTO CLASICO Cabernet 750ml — bulto x6", "san-huberto-clasico-cabernet-750ml", {}),
-  p("SANTA FILOMENA Tinto Patero 1125ml", "Santa", "vinos-espumantes", 15540, 2590, 6, "SANTA FILOMENA Tinto Patero 1125ml — bulto x6", "santa-filomena-tinto-patero-1125ml", {}),
-  p("TALACASTO Tetra Tinto x 1Lts", "Talacasto", "vinos-espumantes", 14610, 1217.50, 12, "TALACASTO Tetra Tinto x 1Lts — bulto x12", "talacasto-tetra-tinto-x-1lts", {}),
-  p("TALACASTO Tetra Blanco x 1Lts", "Talacasto", "vinos-espumantes", 14610, 1217.50, 12, "TALACASTO Tetra Blanco x 1Lts — bulto x12", "talacasto-tetra-blanco-x-1lts", {}),
+  p("SANTA FILOMENA Tinto Patero 1125ml", "Santa", "vinos-espumantes", 15550, 2591.67, 6, "SANTA FILOMENA Tinto Patero 1125ml — bulto x6", "santa-filomena-tinto-patero-1125ml", {}),
+  p("TALACASTO Tetra Tinto x 1Lts", "Talacasto", "vinos-espumantes", 15100, 1258.33, 12, "TALACASTO Tetra Tinto x 1Lts — bulto x12", "talacasto-tetra-tinto-x-1lts", {}),
+  p("TALACASTO Tetra Blanco x 1Lts", "Talacasto", "vinos-espumantes", 15100, 1258.33, 12, "TALACASTO Tetra Blanco x 1Lts — bulto x12", "talacasto-tetra-blanco-x-1lts", {}),
   p("TORO Clasico Tinto x 750ml", "Toro", "vinos-espumantes", 12600, 2100, 6, "TORO Clasico Tinto x 750ml — bulto x6", "toro-clasico-tinto-x-750ml", {}),
   p("TORO Tetra Blanco x 1Lts", "Toro", "vinos-espumantes", 15310, 1275.83, 12, "TORO Tetra Blanco x 1Lts — bulto x12", "toro-tetra-blanco-x-1lts", {}),
-  p("TORO Tinto (EX-930) 700ML", "Toro", "vinos-espumantes", 10410, 1735, 6, "TORO Tinto (EX-930) 700ML — bulto x6", "toro-tinto-ex-930-700ml", {}),
+  p("TORO Tinto (EX-930) 700ML", "Toro", "vinos-espumantes", 10400, 1733.33, 6, "TORO Tinto (EX-930) 700ML — bulto x6", "toro-tinto-ex-930-700ml", {}),
   p("TORO Tinto (EX930) 1Lts", "Toro", "vinos-espumantes", 14000, 2333.33, 6, "TORO Tinto (EX930) 1Lts — bulto x6", "toro-tinto-ex930-1lts", {}),
   p("TORO Clasico Tinto x 1125ml", "Toro", "vinos-espumantes", 15850, 2641.67, 6, "TORO Clasico Tinto x 1125ml — bulto x6", "toro-clasico-tinto-x-1125ml", {}),
-  p("UVITA Blanco 1Lts", "Uvita", "vinos-espumantes", 181200, 15100, 12, "UVITA Blanco 1Lts — bulto x12", "uvita-blanco-1lts", {}),
-  p("UVITA Blanco Dulce 1Lts", "Uvita", "vinos-espumantes", 181200, 15100, 12, "UVITA Blanco Dulce 1Lts — bulto x12", "uvita-blanco-dulce-1lts", {}),
+  p("UVITA Blanco 1Lts", "Uvita", "vinos-espumantes", 16660, 1388.33, 12, "UVITA Blanco 1Lts — bulto x12", "uvita-blanco-1lts", {}),
+  p("UVITA Blanco Dulce 1Lts", "Uvita", "vinos-espumantes", 16660, 1388.33, 12, "UVITA Blanco Dulce 1Lts — bulto x12", "uvita-blanco-dulce-1lts", {}),
   p("UVITA Tinto 1Lts", "Uvita", "vinos-espumantes", 16660, 1388.33, 12, "UVITA Tinto 1Lts — bulto x12", "uvita-tinto-1lts", {}),
   p("UVITA Tinto Dulce 1Lts", "Uvita", "vinos-espumantes", 16660, 1388.33, 12, "UVITA Tinto Dulce 1Lts — bulto x12", "uvita-tinto-dulce-1lts", {}),
-  p("VIÑA MAYOR Blend Tinto 700ml", "Viña", "vinos-espumantes", 8760, 1460, 6, "VIÑA MAYOR Blend Tinto 700ml — bulto x6", "vina-mayor-blend-tinto-700ml", {}),
+  p("VIÑA MAYOR Blend Tinto 700ml", "Viña", "vinos-espumantes", 8770, 1461.67, 6, "VIÑA MAYOR Blend Tinto 700ml — bulto x6", "vina-mayor-blend-tinto-700ml", {}),
   p("ZUMUVA Tetra Tinto x 1 Lts", "Zumuva", "vinos-espumantes", 15900, 1325, 12, "ZUMUVA Tetra Tinto x 1 Lts — bulto x12", "zumuva-tetra-tinto-x-1-lts", {}),
-  p("ZUMUVA Tetra Blanco x 1 Lts", "Zumuva", "vinos-espumantes", 190860, 15905, 12, "ZUMUVA Tetra Blanco x 1 Lts — bulto x12", "zumuva-tetra-blanco-x-1-lts", {}),
-  p("ZUMUVA Tetra Blanco Dulce x 1 Lts", "Zumuva", "vinos-espumantes", 190860, 15905, 12, "ZUMUVA Tetra Blanco Dulce x 1 Lts — bulto x12", "zumuva-tetra-blanco-dulce-x-1-lts", {}),
+  p("ZUMUVA Tetra Blanco x 1 Lts", "Zumuva", "vinos-espumantes", 15900, 1325, 12, "ZUMUVA Tetra Blanco x 1 Lts — bulto x12", "zumuva-tetra-blanco-x-1-lts", {}),
+  p("ZUMUVA Tetra Blanco Dulce x 1 Lts", "Zumuva", "vinos-espumantes", 15900, 1325, 12, "ZUMUVA Tetra Blanco Dulce x 1 Lts — bulto x12", "zumuva-tetra-blanco-dulce-x-1-lts", {}),
   p("Fernet BRANCA x 750ml", "Branca", "bebidas-alcohol", 14770, 14770, 1, "Fernet BRANCA x 750ml — bulto x12", "fernet-branca-x-750ml", {}),
   p("Fernet BRANCA x 450ml", "Branca", "bebidas-alcohol", 10150, 10150, 1, "Fernet BRANCA x 450ml — bulto x12", "fernet-branca-x-450ml", {}),
   p("Fernet BRANCA Menta x 450ml", "Branca", "bebidas-alcohol", 8600, 8600, 1, "Fernet BRANCA Menta x 450ml — bulto x12", "fernet-branca-menta-x-450ml", {}),
@@ -199,10 +200,10 @@ const PRODUCTS = [
   p("Vodka SERNOVA Wild Berries x 700ml", "Sernova", "bebidas-alcohol", 7640, 7640, 1, "Vodka SERNOVA Wild Berries x 700ml — bulto x6", "vodka-sernova-wild-berries-x-700ml", {}),
   p("Vodka SERNOVA Sweet Apple x 700ml", "Sernova", "bebidas-alcohol", 7640, 7640, 1, "Vodka SERNOVA Sweet Apple x 700ml — bulto x6", "vodka-sernova-sweet-apple-x-700ml", {}),
   p("Vodka SERNOVA Trop.Passion x 700ml", "Sernova", "bebidas-alcohol", 7640, 7640, 1, "Vodka SERNOVA Trop.Passion x 700ml — bulto x6", "vodka-sernova-trop-passion-x-700ml", {}),
-  p("Alfajores Guaymallen Chocolate", "Alfajores", "galletitas", 9970, 249.25, 40, "Alfajores Guaymallen Chocolate — bulto x40", "alfajores-guaymallen-chocolate", {}),
-  p("Alfajor Guaymallen Blanco", "Alfajores", "galletitas", 9970, 249.25, 40, "Alfajor Guaymallen Blanco — bulto x40", "alfajores-guaymallen-dulce-de-leche", {}),
-  p("Alfajores Guaymallen TRIPLE Chocolate", "Triple", "galletitas", 9970, 415.42, 24, "Alfajores Guaymallen TRIPLE Chocolate — bulto x24", "alfajores-guaymallen-triple-chocolate", {}),
-  p("Alfajores Guaymallen TRIPLE Blanco", "Triple", "galletitas", 9970, 415.42, 24, "Alfajores Guaymallen TRIPLE Blanco — bulto x24", "alfajores-guaymallen-triple-dulce-de", {}),
+  p("Alfajores Guaymallen Chocolate", "Alfajores", "galletitas", 0, 0, 40, "Alfajores Guaymallen Chocolate — bulto x40", "alfajores-guaymallen-chocolate", { etiqueta: "sin-stock" }),
+  p("Alfajor Guaymallen Blanco", "Alfajores", "galletitas", 0, 0, 40, "Alfajor Guaymallen Blanco — bulto x40", "alfajores-guaymallen-dulce-de-leche", { etiqueta: "sin-stock" }),
+  p("Alfajores Guaymallen TRIPLE Chocolate", "Triple", "galletitas", 0, 0, 24, "Alfajores Guaymallen TRIPLE Chocolate — bulto x24", "alfajores-guaymallen-triple-chocolate", { etiqueta: "sin-stock" }),
+  p("Alfajores Guaymallen TRIPLE Blanco", "Triple", "galletitas", 0, 0, 24, "Alfajores Guaymallen TRIPLE Blanco — bulto x24", "alfajores-guaymallen-triple-dulce-de", { etiqueta: "sin-stock" }),
   p("Alfajor Capitan del Espacio Chocolate", "Alfajor", "galletitas", 43900, 1219.44, 36, "Alfajor Capitan del Espacio Chocolate — bulto x36", "alfajor-capitan-del-espacio-chocolate", {}),
   p("Alfajor Capitan del Espacio Dulce de Leche", "Alfajor", "galletitas", 43900, 1219.44, 36, "Alfajor Capitan del Espacio Dulce de Leche — bulto x36", "alfajor-capitan-del-espacio-dulce-de", {}),
   p("Alfajor Capitan del Espacio TRIPLE", "Triple", "galletitas", 44500, 1854.17, 24, "Alfajor Capitan del Espacio TRIPLE — bulto x24", "alfajor-capitan-del-espacio-triple", {}),
@@ -211,9 +212,8 @@ const PRODUCTS = [
   p("Don Satur Negritas X 200GRS", "Don", "galletitas", 1110, 1110, 1, "Don Satur Negritas X 200GRS — bulto x30", "don-satur-negritas-x-200grs", {}),
   p("Don Satur Magdalena x 220Grs", "Don", "galletitas", 2270, 2270, 1, "Don Satur Magdalena x 220Grs — bulto x10", "don-satur-magdalena-x-220grs", {}),
   p("Don Satur Talitas x 140g", "Don", "galletitas", 1210, 1210, 1, "Don Satur Talitas x 140g — bulto x20", "don-satur-talitas-x-140g", {}),
-  p("Arroz Gallo PARBOIL Oro 500 Grs", "Gallo", "arroz", 13610, 1361, 10, "Arroz Gallo PARBOIL Oro 500 Grs — bulto x10", "arroz-gallo-parboil-oro-500-grs", {}),
-  p("Arroz Lucchetti Largo fino 500Grs", "Lucchetti", "arroz", 8850, 885, 10, "Arroz Lucchetti Largo fino 500Grs — bulto x10", "arroz-lucchetti-largo-fino-500grs", {}),
-  p("Monte Lirio x 500G", "Monte Lirio", "fideos", 18950, 1895, 10, "Monte Lirio x 500G — bulto x10", "monte-lirio-x-500g", {}),
+  p("Arroz Gallo PARBOIL Oro 500 Grs", "Gallo", "arroz", 13620, 1362, 10, "Arroz Gallo PARBOIL Oro 500 Grs — bulto x10", "arroz-gallo-parboil-oro-500-grs", {}),
+  p("Arroz Lucchetti Largo fino 500Grs", "Lucchetti", "arroz", 8860, 886, 10, "Arroz Lucchetti Largo fino 500Grs — bulto x10", "arroz-lucchetti-largo-fino-500grs", {}),
   p("Monte Lirio Moños x 500G", "Monte Lirio", "fideos", 22050, 2205, 10, "Monte Lirio Moños x 500G — bulto x10", "monte-lirio-monos-x-500g", {}),
   p("Lucchetti Ave Maria x 500GRS", "Lucchetti", "fideos", 1070, 1070, 1, "Lucchetti Ave Maria x 500GRS — bulto x15", "lucchetti-ave-maria-x-500grs", {}),
   p("Lucchetti Dedalito x 500GRS", "Lucchetti", "fideos", 1070, 1070, 1, "Lucchetti Dedalito x 500GRS — bulto x15", "lucchetti-dedalito-x-500grs", {}),
@@ -264,17 +264,20 @@ const PRODUCTS = [
   p("Endulzante SI LIGHT STEVIA 600cc", "Light", "almacen", 12040, 2006.67, 6, "Endulzante SI LIGHT STEVIA 600cc — bulto x6", "endulzante-si-light-stevia-600cc", {}),
   p("Encendedores Candela x 25 Unidades", "Encendedores", "almacen", 8490, 339.60, 25, "Encendedores Candela x 25 Unidades — bulto x25", "encendedores-candela-x-25-unidades", {}),
   p("Encendedores Okey x 25 Unidades", "Encendedores", "almacen", 5820, 232.80, 25, "Encendedores Okey x 25 Unidades — bulto x25", "encendedores-okey-x-25-unidades", {}),
-  p("Harina Morixe 000 1Kg", "Harina", "almacen", 10740, 1074, 10, "Harina Morixe 000 1Kg — bulto x10", "harina-morixe-000-1kg", {}),
-  p("Harina Morixe 0000 1Kg", "Harina", "almacen", 10740, 1074, 10, "Harina Morixe 0000 1Kg — bulto x10", "harina-morixe-0000-1kg", {}),
+  p("Harina Morixe 000 1Kg", "Harina", "almacen", 8150, 815, 10, "Harina Morixe 000 1Kg — bulto x10", "harina-morixe-000-1kg", {}),
+  p("Harina Morixe 0000 1Kg", "Harina", "almacen", 10470, 1047, 10, "Harina Morixe 0000 1Kg — bulto x10", "harina-morixe-0000-1kg", {}),
   p("Harina Morixe Leudante 1Kg", "Harina", "almacen", 13410, 1341, 10, "Harina Morixe Leudante 1Kg — bulto x10", "harina-morixe-leudante-1kg", {}),
   p("Harina Morixe para pizza 1Kg", "Harina", "almacen", 13000, 1300, 10, "Harina Morixe para pizza 1Kg — bulto x10", "harina-morixe-para-pizza-1kg", {}),
-  p("Jugo de Limón Minerva x 250cc", "Jugo", "almacen", 0, 0, 1, "Jugo de Limón Minerva x 250cc", "jugo-de-limon-minerva-x-250cc", { etiqueta: "sin-stock" }),
+  p("Harina Morixe Integral 1Kg", "Harina", "almacen", 11750, 1175, 10, "Harina Morixe Integral 1Kg — bulto x10", "harina-morixe-integral-1kg", {}),
+  p("Soda Sifón TORASSO 2Lts", "Torasso", "bebidas-sin-alcohol", 7490, 1248.33, 6, "Soda Sifón TORASSO 2Lts — bulto x6", "soda-sifon-torasso-2lts", {}),
+  p("Jugo de Limón Minerva x 250cc", "Jugo", "almacen", 0, 0, 12, "Jugo de Limón Minerva x 250cc", "jugo-de-limon-minerva-x-250cc", { etiqueta: "sin-stock" }),
   p("Jugo Tang x 20 Uni.", "Jugo", "almacen", 7320, 7320, 1, "Jugo Tang x 20 Uni. — bulto x20", "jugo-tang-x-20-uni", {}),
   p("Jugo Clight x 20 Uni", "Jugo", "almacen", 7690, 7690, 1, "Jugo Clight x 20 Uni — bulto x20", "jugo-clight-x-20-uni", {}),
-  p("Ketchup Hellmans x 60GRS", "Ketchup", "almacen", 23150, 771.67, 30, "Ketchup Hellmans x 60GRS — bulto x30", "ketchup-hellmans-x-60grs", {}),
-  p("Ketchup Hellmans x 250Grs", "Ketchup", "almacen", 1920, 1920, 1, "Ketchup Hellmans x 250Grs", "ketchup-hellmans-x-250grs", {}),
+  p("Ketchup Hellmans x 60GRS", "Ketchup", "almacen", 21870, 729, 30, "Ketchup Hellmans x 60GRS — bulto x30", "ketchup-hellmans-x-60grs", {}),
+  p("Ketchup Hellmans x 250Grs", "Ketchup", "almacen", 46080, 1920, 24, "Ketchup Hellmans x 250Grs", "ketchup-hellmans-x-250grs", {}),
   p("Maizena x 220Grs", "Maizena", "almacen", 2190, 2190, 1, "Maizena x 220Grs — bulto x50", "maizena-x-220grs", {}),
   p("Mayonesa Hellmans x 118Grs", "Mayonesa", "almacen", 15300, 765, 20, "Mayonesa Hellmans x 118Grs — bulto x20", "mayonesa-hellmans-x-118grs", {}),
+  p("Mayonesa Hellmans x 237Grs", "Mayonesa", "almacen", 33200, 1383.33, 24, "Mayonesa Hellmans x 237Grs — bulto x24", "mayonesa-hellmans-x-237grs", {}),
   p("Mermelada Baggio De La Huerta 454Grs", "Mermelada", "almacen", 1580, 1580, 1, "Mermelada Baggio De La Huerta 454Grs — bulto x6", "mermelada-baggio-de-la-huerta-454grs", {}),
   p("Mostaza Savora DP x 250Grs", "Mostaza", "almacen", 1430, 1430, 1, "Mostaza Savora DP x 250Grs — bulto x24", "mostaza-savora-dp-x-250grs", {}),
   p("Pan Rallado Morixe 500Grs", "Pan", "almacen", 870, 870, 1, "Pan Rallado Morixe 500Grs — bulto x12", "pan-rallado-morixe-500grs", {}),
@@ -286,9 +289,9 @@ const PRODUCTS = [
   p("Sal Entrefina Celusal Paquete x 500Grs", "Sal", "almacen", 1140, 1140, 1, "Sal Entrefina Celusal Paquete x 500Grs — bulto x30", "sal-entrefina-celusal-paquete-x-500grs", {}),
   p("Sal Fina Tresal x 500Grs", "Sal", "almacen", 480, 480, 1, "Sal Fina Tresal x 500Grs — bulto x20", "sal-fina-tresal-x-500grs", {}),
   p("Sal Entrefina Tresal x 1Kg", "Sal", "almacen", 830, 830, 1, "Sal Entrefina Tresal x 1Kg — bulto x10", "sal-entrefina-tresal-x-1kg", {}),
-  p("Sal Gruesa Tresal x 1Kg", "Sal", "almacen", 880, 880, 1, "Sal Gruesa Tresal x 1Kg", "sal-gruesa-tresal-x-1kg", {}),
+  p("Sal Gruesa Tresal x 1Kg", "Sal", "almacen", 0, 0, 10, "Sal Gruesa Tresal x 1Kg", "sal-gruesa-tresal-x-1kg", { etiqueta: "sin-stock" }),
   p("Salsas Knorr Pizza 340Grs", "Salsas", "almacen", 0, 0, 1, "Salsas Knorr Pizza 340Grs — bulto x24", "salsas-knorr-pizza-340grs", { etiqueta: "sin-stock" }),
-  p("Vinagre Casalta x 1Lts", "Casalta", "almacen", 1280, 1280, 1, "Vinagre Casalta x 1Lts", "vinagre-casalta-x-1lts", {}),
+  p("Vinagre Casalta x 1Lts", "Casalta", "almacen", 15360, 1280, 12, "Vinagre Casalta x 1Lts", "vinagre-casalta-x-1lts", {}),
   p("Yerba Amanda x 500Grs", "Yerba", "almacen", 1698, 1698, 1, "Yerba Amanda x 500Grs — bulto x10", "yerba-amanda-x-500grs", {}),
   p("P/H ELEGANTE DOBLE HOJA (VIOLETA) 4/30MTS", "Elegante", "papeles", 22780, 2278, 10, "P/H ELEGANTE DOBLE HOJA (VIOLETA) 4/30MTS — bulto x10", "p-h-elegante-doble-hoja-violeta-4-30mts", {}),
   p("P/H ELEGANTE H/S X 80 M (VERDE) 4/80MTS", "Elegante", "papeles", 33220, 3322, 10, "P/H ELEGANTE H/S X 80 M (VERDE) 4/80MTS — bulto x10", "p-h-elegante-h-s-x-80-m-verde-4-80mts", {}),
@@ -298,6 +301,10 @@ const PRODUCTS = [
   p("R/C ELEGANTE X 3 DE 50 PAÑOS (ROJO)", "Elegante", "papeles", 11980, 1497.50, 8, "R/C ELEGANTE X 3 DE 50 PAÑOS (ROJO) — bulto x8", "r-c-elegante-x-3-de-50-panos-rojo", {}),
   p("R/C DICHA X 3 DE 40 PAÑOS", "Dicha", "papeles", 15160, 1263.33, 12, "R/C DICHA X 3 DE 40 PAÑOS — bulto x12", "r-c-dicha-x-3-de-40-panos", {}),
   p("P/H PERIPEL INDIVIDUAL H/S X 80MTS X 30 Unidades", "Peripel", "papeles", 8200, 273.33, 30, "P/H PERIPEL INDIVIDUAL H/S X 80MTS X 30 Unidades — bulto x30", "p-h-peripel-individual-h-s-x-80mts-x-30-", {}),
+  p("P/H ELEGANTE H/S 24/30mts PREMIUM ALOE", "Elegante", "papeles", 8590, 357.92, 24, "P/H ELEGANTE H/S 24/30mts PREMIUM ALOE — bulto x24", "p-h-elegante-h-s-24-30mts-premium-aloe", {}),
+  p("R/C ELEGANTE X 3 DE 100 PAÑOS (VERDE)", "Elegante", "papeles", 13190, 2638, 5, "R/C ELEGANTE X 3 DE 100 PAÑOS (VERDE) — bulto x5", "r-c-elegante-x-3-de-100-panos-verde", {}),
+  p("SERVILLETA ELEGANTE x PACK 80", "Elegante", "papeles", 31500, 1050, 30, "SERVILLETA ELEGANTE x PACK 80 — bulto x30", "servilleta-elegante-x-pack-80", {}),
+  p("PAÑUELOS ELEGANTE POCKET D/H 6x10", "Elegante", "papeles", 25800, 860, 30, "PAÑUELOS ELEGANTE POCKET D/H 6x10 — bulto x30", "panuelos-elegante-pocket-d-h-6x10", {}),
   p("BLEM Aerosol X 360cc", "Blem", "limpieza", 5870, 5870, 1, "BLEM Aerosol X 360cc — bulto x12", "blem-aerosol-x-360cc", {}),
   p("CERAMICOL Aerosol X 360cc", "Ceramicol", "limpieza", 5240, 5240, 1, "CERAMICOL Aerosol X 360cc — bulto x12", "ceramicol-aerosol-x-360cc", {}),
   p("CIF Antigrasa DP 450ml", "Cif", "limpieza", 1530, 1530, 1, "CIF Antigrasa DP 450ml — bulto x15", "cif-antigrasa-dp-450ml", {}),
@@ -310,7 +317,7 @@ const PRODUCTS = [
   p("Espirales RAID x 12 sobres de 4 unidades", "Raid", "limpieza", 9390, 9390, 1, "Espirales RAID x 12 sobres de 4 unidades — bulto x12", "espirales-raid-x-12-sobres-de-4-unidades", {}),
   p("Espirales RAID Estuches x 12 Unidades", "Raid", "limpieza", 2340, 2340, 1, "Espirales RAID Estuches x 12 Unidades — bulto x24", "espirales-raid-estuches-x-12-unidades", {}),
   p("Esponja Acero Inox. MAKE 10grs", "Make", "limpieza", 2850, 2850, 1, "Esponja Acero Inox. MAKE 10grs — bulto x12", "esponja-acero-inox-make-10grs", {}),
-  p("Esponja Lisita MORTIMER x 12 unidades", "Mortimer", "limpieza", 6800, 6800, 1, "Esponja Lisita MORTIMER x 12 unidades", "esponja-lisita-mortimer-x-12-unidades", {}),
+  p("Esponja Lisita MORTIMER x 12 unidades", "Mortimer", "limpieza", 6800, 566.67, 12, "Esponja Lisita MORTIMER x 12 unidades", "esponja-lisita-mortimer-x-12-unidades", {}),
   p("FUYI MMM Aerosol x 360cc", "Fuyi", "limpieza", 5370, 5370, 1, "FUYI MMM Aerosol x 360cc — bulto x12", "fuyi-mmm-aerosol-x-360cc", {}),
   p("GLADE Aerosol x 360cc", "Glade", "limpieza", 3080, 3080, 1, "GLADE Aerosol x 360cc — bulto x6", "glade-aerosol-x-360cc", {}),
   p("GLADE Pastillas Inodoro", "Glade", "limpieza", 690, 690, 1, "GLADE Pastillas Inodoro — bulto x24", "glade-pastillas-inodoro", {}),
@@ -318,7 +325,7 @@ const PRODUCTS = [
   p("Jabon en Polvo ALA x 400Grs", "Ala", "limpieza", 1460, 1460, 1, "Jabon en Polvo ALA x 400Grs — bulto x24", "jabon-en-polvo-ala-x-400grs", {}),
   p("Jabon Liquido ALA DP x 800ml", "Ala", "limpieza", 2850, 2850, 1, "Jabon Liquido ALA DP x 800ml — bulto x12", "jabon-liquido-ala-dp-x-800ml", {}),
   p("Jabon Liquido GRANBY DP x 800ml", "Granby", "limpieza", 2250, 2250, 1, "Jabon Liquido GRANBY DP x 800ml — bulto x12", "jabon-liquido-granby-dp-x-800ml", {}),
-  p("Jabon Liquido GRANBY DP x 3 litros", "Granby", "limpieza", 8580, 8580, 1, "Jabon Liquido GRANBY DP x 3 litros", "jabon-liquido-granby-dp-x-3-litros", {}),
+  p("Jabon Liquido GRANBY DP x 3 litros", "Granby", "limpieza", 34320, 8580, 4, "Jabon Liquido GRANBY DP x 3 litros", "jabon-liquido-granby-dp-x-3-litros", {}),
   p("Jabon Liquido SKIP BIO ENZIMAS DP x 800ml", "Skip", "limpieza", 3090, 3090, 1, "Jabon Liquido SKIP BIO ENZIMAS DP x 800ml — bulto x12", "jabon-liquido-skip-bio-enzimas-dp-x-800m", {}),
   p("Lavandina AYUDIN x 1 Lts", "Ayudin", "limpieza", 1130, 1130, 1, "Lavandina AYUDIN x 1 Lts — bulto x15", "lavandina-ayudin-x-1-lts", {}),
   p("Lavandina AYUDIN x 2 Lts", "Ayudin", "limpieza", 2460, 2460, 1, "Lavandina AYUDIN x 2 Lts — bulto x8", "lavandina-ayudin-x-2-lts", {}),
@@ -334,14 +341,14 @@ const PRODUCTS = [
   p("RAID Matapulgas x 390cc", "Raid", "limpieza", 14200, 14200, 1, "RAID Matapulgas x 390cc — bulto x12", "raid-matapulgas-x-390cc", {}),
   p("RAID MAX Hormigas Aero x 360cc", "Raid", "limpieza", 9410, 9410, 1, "RAID MAX Hormigas Aero x 360cc — bulto x12", "raid-max-hormigas-aero-x-360cc", {}),
   p("RAID MAX Mata Cucarachas y Arañas Aero x 360cc", "Raid", "limpieza", 11410, 11410, 1, "RAID MAX Mata Cucarachas y Arañas Aero x 360cc — bulto x12", "raid-max-mata-cucarachas-y-aranas-aero-x", {}),
-  p("Suavizante VIVERE Plancha Facil x 810ml", "Vivere", "limpieza", 2950, 2950, 1, "Suavizante VIVERE Plancha Facil x 810ml", "suavizante-vivere-plancha-facil-x-810ml", {}),
+  p("Suavizante VIVERE Plancha Facil x 810ml", "Vivere", "limpieza", 35400, 2950, 12, "Suavizante VIVERE Plancha Facil x 810ml", "suavizante-vivere-plancha-facil-x-810ml", {}),
   p("Suavizante VIVERE Clasico x 900ml", "Vivere", "limpieza", 3410, 3410, 1, "Suavizante VIVERE Clasico x 900ml — bulto x12", "suavizante-vivere-clasico-x-900ml", {}),
   p("Tabletas RAID x 24 Unidades", "Raid", "limpieza", 5910, 5910, 1, "Tabletas RAID x 24 Unidades — bulto x12", "tabletas-raid-x-24-unidades", {}),
-  p("Velas GOLONDRINA x 4 Unidades", "Golondrina", "almacen", 0, 0, 1, "Velas GOLONDRINA x 4 Unidades", "velas-golondrina-x-4-unidades", { etiqueta: "sin-stock" }),
-  p("Velas GONZALITO x 4 Unidades", "Gonzalito", "almacen", 0, 0, 1, "Velas GONZALITO x 4 Unidades", "velas-gonzalito-x-4-unidades", { etiqueta: "sin-stock" }),
+  p("Velas GOLONDRINA x 4 Unidades", "Golondrina", "almacen", 0, 0, 25, "Velas GOLONDRINA x 4 Unidades", "velas-golondrina-x-4-unidades", { etiqueta: "sin-stock" }),
+  p("Velas GONZALITO x 4 Unidades", "Gonzalito", "almacen", 0, 0, 25, "Velas GONZALITO x 4 Unidades", "velas-gonzalito-x-4-unidades", { etiqueta: "sin-stock" }),
   p("CURITAS Aposito de Tela 8 Unidades", "Curitas", "perfumeria", 33030, 1376.25, 24, "CURITAS Aposito de Tela 8 Unidades — bulto x24", "curitas-aposito-de-tela-8-unidades", {}),
   p("Desodorante AXE 96Grs", "Axe", "perfumeria", 3290, 3290, 1, "Desodorante AXE 96Grs — bulto x12", "desodorante-axe-96grs", {}),
-  p("Desodorante DOVE x 150ML", "Dove", "perfumeria", 0, 0, 1, "Desodorante DOVE x 150ML", "desodorante-dove-x-150ml", { etiqueta: "sin-stock" }),
+  p("Desodorante DOVE x 150ML", "Dove", "perfumeria", 0, 0, 12, "Desodorante DOVE x 150ML", "desodorante-dove-x-150ml", { etiqueta: "sin-stock" }),
   p("Desodorante REXONA x 90Grs", "Rexona", "perfumeria", 4010, 4010, 1, "Desodorante REXONA x 90Grs — bulto x12", "desodorante-rexona-x-90grs", {}),
   p("Desodorante en crema REXONA Odorono C/Glicerina x 60Grs", "Rexona", "perfumeria", 2250, 2250, 1, "Desodorante en crema REXONA Odorono C/Glicerina x 60Grs — bulto x12", "desodorante-en-crema-rexona-odorono-c-gl", {}),
   p("DOVE Shampoo x 200ml", "Dove", "perfumeria", 3950, 3950, 1, "DOVE Shampoo x 200ml — bulto x12", "dove-shampoo-x-200ml", {}),
@@ -388,14 +395,14 @@ const PRODUCTS = [
   p("Bombonera en Caja 264Grs", "Bombonera", "chocolates", 13960, 13960, 1, "Bombonera en Caja 264Grs — bulto x1", "bombonera-en-caja-264grs", {}),
   p("Bombón D'OR 12Grs", "Bombón", "chocolates", 11890, 396.33, 30, "Bombón D'OR 12Grs — bulto x30", "bombon-d-or-12grs", {}),
   p("Cerealfort 23Grs", "Cerealfort", "chocolates", 10990, 457.92, 24, "Cerealfort 23Grs — bulto x24", "cerealfort-23grs", {}),
-  p("Chocolate Clasico 70% Cacao 50Grs", "Chocolate", "chocolates", 52000, 3250, 16, "Chocolate Clasico 70% Cacao 50Grs — bulto x16", "chocolate-clasico-70-cacao-50grs", {}),
-  p("Choc.Leche y Mani 75Grs", "Choc.Leche", "chocolates", 28350, 2835, 10, "Choc.Leche y Mani 75Grs — bulto x10", "choc-leche-y-mani-75grs", {}),
+  p("Chocolate Clasico 70% Cacao 50Grs", "Chocolate", "chocolates", 0, 0, 16, "Chocolate Clasico 70% Cacao 50Grs — bulto x16", "chocolate-clasico-70-cacao-50grs", { etiqueta: "sin-stock" }),
+  p("Choc.Leche y Mani 75Grs", "Choc.Leche", "chocolates", 0, 0, 10, "Choc.Leche y Mani 75Grs — bulto x10", "choc-leche-y-mani-75grs", { etiqueta: "sin-stock" }),
   p("Chupelatin 15Grs", "Chupelatin", "chocolates", 28720, 897.50, 32, "Chupelatin 15Grs — bulto x32", "chupelatin-15grs", {}),
-  p("Diabfort / Fort Diet Leche 20 x 50grs", "Diabfort", "chocolates", 0, 0, 20, "Diabfort / Fort Diet Leche 20 x 50grs — bulto x20", "diabfort-fort-diet-leche-20-x-50grs", { etiqueta: "sin-stock" }),
+  p("Diabfort / Fort Diet Leche 20 x 50grs", "Diabfort", "chocolates", 67030, 3351.5, 20, "Diabfort / Fort Diet Leche 20 x 50grs — bulto x20", "diabfort-fort-diet-leche-20-x-50grs", {}),
   p("Dos Corazones 26Grs", "Dos", "chocolates", 20460, 1023, 20, "Dos Corazones 26Grs — bulto x20", "dos-corazones-26grs", {}),
   p("Feeling 20Grs", "Feeling", "chocolates", 15990, 533, 30, "Feeling 20Grs — bulto x30", "feeling-20grs", {}),
   p("Fort Chocolate C/Maní 30Grs", "Fort", "chocolates", 13300, 1108.33, 12, "Fort Chocolate C/Maní 30Grs — bulto x12", "fort-chocolate-c-mani-30grs", {}),
-  p("Jack Chocolate con sorpresa", "Jack", "chocolates", 0, 0, 20, "Jack Chocolate con sorpresa — bulto x20", "jack-chocolate-con-sorpresa", { etiqueta: "sin-stock" }),
+  p("Jack Chocolate con sorpresa", "Jack", "chocolates", 27750, 1387.5, 20, "Jack Chocolate con sorpresa — bulto x20", "jack-chocolate-con-sorpresa", {}),
   p("Jackelin 14Grs", "Jackelin", "chocolates", 0, 0, 30, "Jackelin 14Grs — bulto x30", "jackelin-14grs", { etiqueta: "sin-stock" }),
   p("Kooky Bon 10Grs", "Kooky", "chocolates", 8670, 289, 30, "Kooky Bon 10Grs — bulto x30", "kooky-bon-10grs", {}),
   p("Licorfort Whisky 13Grs", "Licorfort", "chocolates", 0, 0, 30, "Licorfort Whisky 13Grs — bulto x30", "licorfort-whisky-13grs", { etiqueta: "sin-stock" }),
@@ -410,10 +417,10 @@ const PRODUCTS = [
   p("Tableta de Chocolate con Leche y Maní 250grs", "Tableta", "chocolates", 63040, 7880, 8, "Tableta de Chocolate con Leche y Maní 250grs — bulto x8", "tableta-de-chocolate-con-leche-y-mani-25", {}),
   p("Tivis 25Grs", "Tivis", "chocolates", 15570, 778.50, 20, "Tivis 25Grs — bulto x20", "tivis-25grs", {}),
   p("Torroncino 23Grs", "Torroncino", "chocolates", 0, 0, 30, "Torroncino 23Grs — bulto x30", "torroncino-23grs", { etiqueta: "sin-stock" }),
-  p("Vino Huella Pampa Blanco Dulce", "Huellapampa", "vinos-espumantes", 14700, 2450, 6, "Botella 750 ml", "huellapampa-blanco-dulce-750", {}),
+  p("Vino Huella Pampa Blanco Dulce", "Huellapampa", "vinos-espumantes", 15980, 2663.33, 6, "Botella 750 ml", "huellapampa-blanco-dulce-750", {}),
   p("FABRE MONTMAYOU TERRUÑO Cabernet Franc 750ml", "Fabre Montmayou", "vinos-espumantes", 47950, 7991.67, 6, "FABRE MONTMAYOU TERRUÑO Cabernet Franc 750ml — bulto x6", "fabre-montmayou-terruno-cabernet-franc-7", {}),
   p("FABRE MONTMAYOU TERRUÑO Malbec 750ml", "Fabre Montmayou", "vinos-espumantes", 47950, 7991.67, 6, "FABRE MONTMAYOU TERRUÑO Malbec 750ml — bulto x6", "fabre-montmayou-terruno-malbec-750ml", {}),
-  p("Vino Salentein Reserva Malbec 750ml", "Salentein", "vinos-espumantes", 53500, 53500, 1, "Botella 750 ml", "salentein-reserva-malbec-750ml", { etiqueta: "nuevo" }),
+  p("Vino Salentein Reserva Malbec 750ml", "Salentein", "vinos-espumantes", 53500, 8916.67, 6, "Botella 750 ml", "salentein-reserva-malbec-750ml", { etiqueta: "nuevo" }),
   p("Vino Cavic Blanco Tetra 1Lts", "Cavic", "vinos-espumantes", 15100, 1258.33, 12, "Cavic Blanco Tetra 1Lts — bulto x12", "cavic-blanco-tetra-1lts", {}),
   p("Vino Cavic Tinto Tetra 1Lts", "Cavic", "vinos-espumantes", 13000, 1083.33, 12, "Cavic Tinto Tetra 1Lts — bulto x12", "cavic-tinto-tetra-1lts", {}),
   p("Vino Bodega Privada Malbec EPICO RESERVA 750cc", "Bodega Privada", "vinos-espumantes", 33540, 5590, 6, "Bodega Privada Malbec EPICO RESERVA 750cc — bulto x6", "bodega-privada-malbec-epico-reserva-750c", { etiqueta: "nuevo" }),
@@ -436,7 +443,7 @@ const PRODUCTS = [
   p("Brancamenta 750ml", "Branca", "bebidas-alcohol", 156000, 13000, 12, "Brancamenta 750ml — bulto x12", "brancamenta-750ml", {}),
   p("Gin Spirito Blu x 700cc", "Spirito", "bebidas-alcohol", 96000, 16000, 6, "Gin Spirito Blu x 700cc — bulto x6", "gin-spirito-blu-x-700cc", {}),
   p("Famous Grouse Finest x 700ml", "Famous Grouse", "bebidas-alcohol", 84510, 14085, 6, "Famous Grouse Finest x 700ml — bulto x6", "famous-grouse-finest-x-700ml", {}),
-  p("Punt e Mes 750ml", "Punt e Mes", "bebidas-alcohol", 41010, 6835, 6, "Punt e Mes 750ml — bulto x6", "punt-e-mes-750ml", {}),
+  p("Punt e Mes 750ml", "Punt e Mes", "bebidas-alcohol", 42660, 7110, 6, "Punt e Mes 750ml — bulto x6", "punt-e-mes-750ml", {}),
   p("Iguana Rubia 1Lts", "Iguana", "cervezas", 28500, 2375, 12, "Iguana Rubia 1Lts — bulto x12", "iguana-rubia-1lts", {}),
   p("Palermo Liviana 1Lts", "Palermo", "cervezas", 28500, 2375, 12, "Palermo Liviana 1Lts — bulto x12", "palermo-liviana-1lts", {}),
   p("Lata Warsteiner 473cc", "Warsteiner", "cervezas", 37500, 1562.50, 24, "Lata Warsteiner 473cc — bulto x24", "lata-warsteiner-473cc", {}),
@@ -449,12 +456,13 @@ const PRODUCTS = [
   p("Esponja Salvauñas GLOW x 24 unidades", "Glow", "limpieza", 483.33, 483.33, 1, "Esponja Salvauñas GLOW x 24 unidades — bulto x24", "esponja-salvaunas-glow-x-24-unidades", {}),
   p("Esponja de acero GLOW 10Grs", "Glow", "limpieza", 440, 440, 1, "Esponja de acero GLOW 10Grs — bulto x12", "esponja-de-acero-glow-10grs", {}),
   p("Glade Pisos Bidón x 4 Litros", "Glade", "limpieza", 10650, 10650, 1, "Glade Pisos Bidón x 4 Litros", "glade-pisos-bidon-x-4-litros", {}),
-  p("POETT Limpia Pisos x 4Lts", "Poett", "limpieza", 83280, 27760, 3, "POETT Limpia Pisos x 4Lts — bulto x3", "poett-limpia-pisos-x-4lts", {}),
+  p("POETT Limpia Pisos x 4Lts", "Poett", "limpieza", 27760, 9253.33, 3, "POETT Limpia Pisos x 4Lts — bulto x3", "poett-limpia-pisos-x-4lts", {}),
   p("RAID 45 Noches Repuesto Electrico x 32,9ml", "Raid", "limpieza", 6450, 6450, 1, "RAID 45 Noches Repuesto Electrico x 32,9ml", "raid-45-noches-repuesto-electrico-x-32-9", {}),
   p("RAID Aparato P/Tableta Económico", "Raid", "limpieza", 7215, 7215, 1, "RAID Aparato P/Tableta Económico", "raid-aparato-p-tableta-economico", {}),
   p("Vino Toro Tinto Tetra 1L", "Toro", "vinos-espumantes", 20910, 1742.50, 12, "Vino Toro Tinto Tetra 1L — bulto x12", "toro-tinto-tetra-1l", {}),
   p("Fideos Lucchetti Spaghetti x 500Grs", "Lucchetti", "fideos", 1120, 1120, 1, "Fideos Lucchetti Spaghetti x 500Grs — bulto x20", "fideos-lucchetti-spaghetti-x-500grs", {}),
   p("Huevo Jack Mafalda 14Grs", "Jack", "chocolates", 23910, 2391, 10, "Huevo Jack Mafalda 14Grs — bulto x10", "huevo-jack-mafalda-14grs", {}),
+  p("Monedas Jack Mafalda 5Grs", "Jack", "chocolates", 19340, 322.33, 60, "Monedas Jack Mafalda 5Grs — bulto x60", "monedas-jack-mafalda-5grs", {}),
   p("Fort Mint 14Grs", "Fort", "chocolates", 0, 0, 30, "Fort Mint 14Grs — bulto x30", "fort-mint-14grs", { etiqueta: "sin-stock" }),
 ];
 function p(nombre, marca, categoria, precioBulto, precioUnidad, unidBulto, presentacion, sku, extra) {
@@ -486,9 +494,9 @@ function p(nombre, marca, categoria, precioBulto, precioUnidad, unidBulto, prese
 const BRANDS = [
   "Coca-Cola", "Fanta", "Sprite", "Baggio", "Powerade", "Brahma", "Schneider", "Amstel", "Isenbeck", "Warsteiner",
   "Fernet Branca", "Carpano", "Guaymallen", "Don Satur", "Capitán del Espacio", "Felfort", "Lucchetti", "Monte Lirio", "Gallo", "Knorr",
-  "Hellmann's", "Dove", "Rexona", "Sedal", "Suave", "Off", "Raid", "Glade", "Poett", "Ayudín",
+  "Hellmann's", "Dove", "Rexona", "Sedal", "Off", "Raid", "Glade", "Poett", "Ayudín",
   "Harpic", "Cif", "Ala", "Skip", "Lysoform", "Duracell", "Gillette", "Pantene", "Plusbelle", "Lux",
-  "Vivere", "Magistral", "Ceramicol", "Zorro", "Granby",
+  "Vivere", "Magistral", "Ceramicol", "Granby",
 ];
 
 function slugifyBrand(name) {
@@ -536,6 +544,7 @@ function injectBrandsMarqueeStyles() {
       gap: 18px;
       width: max-content;
       animation: brandsScroll 42s linear infinite;
+      animation-duration: 42s !important;
     }
     .brands-marquee__track:hover { animation-play-state: paused; }
     @keyframes brandsScroll {
@@ -988,6 +997,18 @@ function injectConfirmModalStyles() {
       transition: opacity 0.25s ease;
     }
     .confirm-overlay.active { opacity: 1; pointer-events: auto; }
+    @media (max-width: 600px) {
+      .confirm-overlay {
+        align-items: flex-start !important;
+        padding-top: 28px !important;
+        padding-bottom: 28px !important;
+      }
+      .confirm-modal {
+        max-height: calc(100vh - 56px) !important;
+        max-height: calc(100dvh - 56px) !important;
+        overflow-y: auto !important;
+      }
+    }
     .confirm-modal {
       background: var(--paper-alt, #fffdf9);
       border-radius: 18px;
@@ -1055,6 +1076,21 @@ function injectConfirmModalStyles() {
       outline: none;
       border-color: var(--amber-dark, #c07f1f);
     }
+    .confirm-field input.field-invalid {
+      border-color: var(--crate-red, #c1432b);
+      background: rgba(193, 67, 43, 0.05);
+    }
+    .payment-method-toggle.field-invalid {
+      border: 1.5px solid var(--crate-red, #c1432b);
+      border-radius: 10px;
+      padding: 2px;
+    }
+    .field-error {
+      color: var(--crate-red, #c1432b);
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 5px;
+    }
     .payment-method-toggle {
       display: flex;
       gap: 8px;
@@ -1089,6 +1125,15 @@ function injectConfirmModalStyles() {
       align-items: center;
       justify-content: space-between;
       gap: 10px;
+      min-height: 20px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .payment-alias-box.visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
     }
     .payment-alias-box span { color: var(--ink-soft, #33353c); }
     .payment-alias-box strong {
@@ -1110,7 +1155,12 @@ function setPaymentMethod(method) {
   if (!efectivoBtn || !transferenciaBtn || !aliasBox) return;
   efectivoBtn.classList.toggle("active", method === "efectivo");
   transferenciaBtn.classList.toggle("active", method === "transferencia");
-  aliasBox.hidden = method !== "transferencia";
+  aliasBox.classList.toggle("visible", method === "transferencia");
+
+  const paymentBox = document.querySelector(".payment-method-toggle");
+  if (paymentBox) paymentBox.classList.remove("field-invalid");
+  const paymentErrorEl = document.getElementById("paymentMethodError");
+  if (paymentErrorEl) paymentErrorEl.remove();
 }
 
 function buildConfirmModal() {
@@ -1150,7 +1200,7 @@ function buildConfirmModal() {
           <button type="button" class="payment-method-btn" id="paymentEfectivoBtn" data-payment="efectivo">Efectivo</button>
           <button type="button" class="payment-method-btn" id="paymentTransferenciaBtn" data-payment="transferencia">Transferencia</button>
         </div>
-        <div class="payment-alias-box" id="paymentAliasBox" hidden>
+        <div class="payment-alias-box" id="paymentAliasBox">
           <span>Alias para transferir:</span>
           <strong id="paymentAliasValue">${TRANSFER_ALIAS}</strong>
         </div>
@@ -1171,6 +1221,17 @@ function buildConfirmModal() {
 
   [document.getElementById("paymentEfectivoBtn"), document.getElementById("paymentTransferenciaBtn")].forEach((btn) => {
     btn.addEventListener("click", () => setPaymentMethod(btn.dataset.payment));
+  });
+
+  ["confirmName", "confirmCity", "confirmAddress", "confirmCrossStreets"].forEach((id) => {
+    const input = document.getElementById(id);
+    input.addEventListener("input", () => {
+      if (input.value.trim()) {
+        input.classList.remove("field-invalid");
+        const errorEl = document.getElementById(`${id}Error`);
+        if (errorEl) errorEl.remove();
+      }
+    });
   });
 }
 
@@ -1214,7 +1275,65 @@ function closeConfirmModal() {
   document.body.style.overflow = "";
 }
 
+function validateConfirmForm() {
+  const fields = [
+    { id: "confirmName", value: document.getElementById("confirmName").value.trim() },
+    { id: "confirmCity", value: document.getElementById("confirmCity").value.trim() },
+    { id: "confirmAddress", value: document.getElementById("confirmAddress").value.trim() },
+    { id: "confirmCrossStreets", value: document.getElementById("confirmCrossStreets").value.trim() },
+  ];
+
+  let firstInvalidEl = null;
+  fields.forEach(({ id, value }) => {
+    const input = document.getElementById(id);
+    const errorId = `${id}Error`;
+    let errorEl = document.getElementById(errorId);
+    if (!value) {
+      input.classList.add("field-invalid");
+      if (!errorEl) {
+        errorEl = document.createElement("div");
+        errorEl.id = errorId;
+        errorEl.className = "field-error";
+        errorEl.textContent = "Este campo es obligatorio";
+        input.insertAdjacentElement("afterend", errorEl);
+      }
+      if (!firstInvalidEl) firstInvalidEl = input;
+    } else {
+      input.classList.remove("field-invalid");
+      if (errorEl) errorEl.remove();
+    }
+  });
+
+  const paymentBox = document.querySelector(".payment-method-toggle");
+  const paymentErrorId = "paymentMethodError";
+  let paymentErrorEl = document.getElementById(paymentErrorId);
+  if (!state.contactPaymentMethod) {
+    paymentBox.classList.add("field-invalid");
+    if (!paymentErrorEl) {
+      paymentErrorEl = document.createElement("div");
+      paymentErrorEl.id = paymentErrorId;
+      paymentErrorEl.className = "field-error";
+      paymentErrorEl.textContent = "Elegí un método de pago";
+      paymentBox.insertAdjacentElement("afterend", paymentErrorEl);
+    }
+    if (!firstInvalidEl) firstInvalidEl = paymentBox;
+  } else {
+    paymentBox.classList.remove("field-invalid");
+    if (paymentErrorEl) paymentErrorEl.remove();
+  }
+
+  if (firstInvalidEl) {
+    firstInvalidEl.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (firstInvalidEl.focus) firstInvalidEl.focus();
+    showToast("Completá los campos obligatorios");
+    return false;
+  }
+  return true;
+}
+
 function confirmAndSendOrder() {
+  if (!validateConfirmForm()) return;
+
   const name = document.getElementById("confirmName").value.trim();
   const city = document.getElementById("confirmCity").value.trim();
   const address = document.getElementById("confirmAddress").value.trim();
@@ -1433,6 +1552,50 @@ function applyHeroTweaks() {
       color: #12190c !important;
       text-shadow: none !important;
     }
+    @media (max-width: 600px) {
+      .hero::before {
+        background-size: 460px auto !important;
+        background-position: 50% 6% !important;
+      }
+      .hero__visual {
+        display: none !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+      }
+      .hero__inner {
+        margin-top: 130px !important;
+      }
+    }
+    @media (max-width: 400px) {
+      .hero::before {
+        background-size: 400px auto !important;
+        background-position: 50% 5% !important;
+      }
+      .hero__inner {
+        margin-top: 110px !important;
+      }
+    }
+    .search, .search--mobile {
+      background: #6f9633 !important;
+    }
+    .search:focus-within, .search--mobile:focus-within {
+      background: #5f8129 !important;
+      border-color: #12190c !important;
+    }
+    .search__icon {
+      color: #12190c !important;
+    }
+    .search__input {
+      color: #12190c !important;
+    }
+    .search__input::placeholder {
+      color: rgba(18, 25, 12, 0.65) !important;
+    }
+    .floating-instagram {
+      left: auto !important;
+      right: 24px !important;
+      bottom: 96px !important;
+    }
   `;
   document.head.appendChild(style);
 }
@@ -1441,6 +1604,22 @@ function applyHeroTweaks() {
    20) INIT
    ========================================================================== */
 function init() {
+  let themeColorMeta = document.querySelector('meta[name="theme-color"]');
+  if (!themeColorMeta) {
+    themeColorMeta = document.createElement("meta");
+    themeColorMeta.name = "theme-color";
+    document.head.appendChild(themeColorMeta);
+  }
+  themeColorMeta.content = "#6f9633";
+
+  let colorSchemeMeta = document.querySelector('meta[name="color-scheme"]');
+  if (!colorSchemeMeta) {
+    colorSchemeMeta = document.createElement("meta");
+    colorSchemeMeta.name = "color-scheme";
+    document.head.appendChild(colorSchemeMeta);
+  }
+  colorSchemeMeta.content = "light only";
+  document.documentElement.style.colorScheme = "light";
   document.getElementById("year").textContent = new Date().getFullYear();
   applyHeroTweaks();
   renderCategories();
