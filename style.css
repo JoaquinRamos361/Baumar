@@ -581,6 +581,7 @@ p { margin: 0; }
   color: #fff;
   text-transform: uppercase;
 }
+.badge--destacado { background: #eab308 }
 .badge--oferta { background: var(--crate-red); }
 .badge--vendido { background: var(--ink); }
 .badge--nuevo { background: var(--steel); }
