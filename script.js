@@ -21,6 +21,11 @@ const INSTAGRAM_URL = "https://instagram.com/baumardistribuidora";
 // Alias de transferencia bancaria que se muestra cuando el cliente elige "Transferencia" como método de pago.
 // IMPORTANTE: reemplazar por el alias real antes de publicar el sitio.
 const TRANSFER_ALIAS = "TRANVI.CLASE.DUQUE";
+// "Versión" de las imágenes: cambiá esta fecha cada vez que reemplaces o actualices
+// fotos en Cloudinary. Al cambiar el número, todos los navegadores (incluidos los
+// de tus clientes) descargan las imágenes de nuevo en vez de usar la copia guardada.
+const ASSET_VERSION = "20260919";
+
 
 /* ==========================================================================
    2) CATEGORÍAS
@@ -68,31 +73,37 @@ const CATEGORY_ICONS = {
        si hace falta revisar qué productos se dieron de baja o se agregaron. <<<
    ========================================================================== */
 const PRODUCTS = [
-  p("Vino Tinto Toro", "Toro", "vinos-espumantes", 20910, 1742.50, 12, "Tetra Brik 1 L", "toro-tinto-1l", { destacado: true }),
-  p("Vino Tinto Huellapampa Malbec", "Huellapampa", "vinos-espumantes", 16950, 2825, 6, "Botella 750 ml", "huellapampa-malbec-750", { destacado: true, etiqueta: "nuevo" }),
-  p("Vino Tinto Uvita", "Uvita", "vinos-espumantes", 13600, 2266.67, 6, "Botella 1,125 L", "uvita-tinto-1125", { destacado: true, etiqueta: "oferta" }),
-  p("Jugo de Naranja 100% Exprimido", "Baggio", "bebidas-sin-alcohol", 32400, 2700, 12, "Tetra Pak 1 L", "baggio-naranja-1l", { destacado: true, etiqueta: "oferta" }),
+  p("Vino Tinto Toro", "Toro", "vinos-espumantes", 20910, 1742.50, 12, "Tetra Brik 1 L", "toro-tinto-1l", { }),
+  p("Vino Tinto Huellapampa Malbec", "Huellapampa", "vinos-espumantes", 16950, 2825, 6, "Botella 750 ml", "huellapampa-malbec-750", {  }),
+  p("Vino Tinto Uvita", "Uvita", "vinos-espumantes", 13600, 2266.67, 6, "Botella 1,125 L", "uvita-tinto-1125", {etiqueta: "oferta" }),
+  p("Jugo de Naranja 100% Exprimido", "Baggio", "bebidas-sin-alcohol", 32400, 2700, 12, "Tetra Pak 1 L", "baggio-naranja-1l", { etiqueta: "oferta",destacado: true }),
   p("Agua de mesa FRESH x 600CC", "Fresh", "bebidas-sin-alcohol", 3100, 516.67, 6, "Agua de mesa FRESH x 600CC — bulto x6 unidades", "agua-de-mesa-fresh-x-600cc", {}),
   p("Agua de mesa FRESH x 1.5L", "Fresh", "bebidas-sin-alcohol", 4500, 750, 6, "Agua de mesa FRESH x 1.5L — bulto x6 unidades", "agua-de-mesa-fresh-x-1-5l", {}),
-  p("Agua de mesa FRESH x 6.5L", "Fresh", "bebidas-sin-alcohol", 3900, 1950, 2, "Agua de mesa FRESH x 6.5L — bulto x2 unidades", "agua-de-mesa-fresh-x-6-5l", {}),
+  p("Agua de mesa FRESH x 6.5L", "Fresh", "bebidas-sin-alcohol", 3900, 1950, 2, "Agua de mesa FRESH x 6.5L — bulto x2 unidades", "agua-de-mesa-fresh-x-6-5l", {destacado: true}),
   p("Agua VIDA By BAGGIO x 1.5L", "Vida", "bebidas-sin-alcohol", 4500, 750, 6, "Agua VIDA By BAGGIO x 1.5L — bulto x6 unidades", "agua-vida-by-baggio-x-1-5l", {}),
   p("BAGGIO PRONTO x 1,5 Lts Multifruta", "Baggio", "bebidas-sin-alcohol", 15970, 1996.25, 8, "BAGGIO PRONTO x 1,5 Lts Multifruta — bulto x8 unidades", "baggio-pronto-x-1-5-lts-multifruta", {}),
   p("BAGGIO PRONTO x 1,5 Lts Naranja", "Baggio", "bebidas-sin-alcohol", 15970, 1996.25, 8, "BAGGIO PRONTO x 1,5 Lts Naranja — bulto x8 unidades", "baggio-pronto-x-1-5-lts-naranja", {}),
   p("BAGGIO PRONTO x 1Lts Naranja", "Baggio", "bebidas-sin-alcohol", 12500, 1562.50, 8, "BAGGIO PRONTO x 1Lts Naranja — bulto x8 unidades", "baggio-pronto-x-1lts-naranja", {}),
-  p("BAGGIO PRONTO x 1Lts Mixfrutal", "Baggio", "bebidas-sin-alcohol", 12500, 1562.50, 8, "BAGGIO PRONTO x 1Lts Mixfrutal — bulto x8 unidades", "baggio-pronto-x-1lts-mixfrutal", {}),
+  p("BAGGIO PRONTO x 1Lts Mixfrutal", "Baggio", "bebidas-sin-alcohol", 0, 0, 8, "BAGGIO PRONTO x 1Lts Mixfrutal — bulto x8 unidades", "baggio-pronto-x-1lts-mixfrutal", {etiqueta: "sin-stock"}),
   p("BAGGIO PRONTO x 1Lts Manzana", "Baggio", "bebidas-sin-alcohol", 12500, 1562.50, 8, "BAGGIO PRONTO x 1Lts Manzana — bulto x8 unidades", "baggio-pronto-x-1lts-manzana", {}),
-  p("BAGGIO PRONTO x 1Lts Pera", "Baggio", "bebidas-sin-alcohol", 12500, 1562.50, 8, "BAGGIO PRONTO x 1Lts Pera — bulto x8 unidades", "baggio-pronto-x-1lts-pera", {}),
+  p("BAGGIO PRONTO x 1Lts Pera", "Baggio", "bebidas-sin-alcohol", 0, 0, 8, "BAGGIO PRONTO x 1Lts Pera — bulto x8 unidades", "baggio-pronto-x-1lts-pera", {etiqueta: "sin-stock"}),
+  p("BAGGIO PRONTO x 1Lts Multifruta", "Baggio", "bebidas-sin-alcohol", 12500, 1562.50, 8, "BAGGIO PRONTO x 1Lts Multifruta — bulto x8 unidades", "baggio-pronto-x-1lts-multifruta", {}),
   p("BAGGIO PRONTO x 1Lts Durazno", "Baggio", "bebidas-sin-alcohol", 12500, 1562.50, 8, "BAGGIO PRONTO x 1Lts Durazno — bulto x8 unidades", "baggio-pronto-x-1lts-durazno", {}),
   p("BAGGIO FRESH LIVIANO Manzana x 1Lts", "Baggio", "bebidas-sin-alcohol", 0, 0, 8, "BAGGIO FRESH LIVIANO Manzana x 1Lts — bulto x8 unidades", "baggio-fresh-liviano-manzana-x-1lts", { etiqueta: "sin-stock" }),
+  p("BAGGIO FRESH LIVIANO Naranja x 1Lts", "Baggio", "bebidas-sin-alcohol", 0, 0, 8, "BAGGIO FRESH LIVIANO Naranja x 1Lts — bulto x8 unidades", "baggio-fresh-liviano-naranja-x-1lts", { etiqueta: "sin-stock" }),
+  p("BAGGIO FRESH LIVIANO Naranja x 1,5Lts", "Baggio", "bebidas-sin-alcohol", 0, 0, 8, "BAGGIO FRESH LIVIANO Naranja x 1,5Lts — bulto x8 unidades", "baggio-fresh-liviano-naranja-x-1-5lts", { etiqueta: "sin-stock" }),
+  p("BAGGIO FRESH LIVIANO Multifruta x 1,5Lts", "Baggio", "bebidas-sin-alcohol", 0, 0, 8, "BAGGIO FRESH LIVIANO Multifruta x 1,5Lts — bulto x8 unidades", "baggio-fresh-liviano-multifruta-x-1-5lts", { etiqueta: "sin-stock" }),
+  p("BAGGIO FRESH LIVIANO Manzana x 1,5Lts", "Baggio", "bebidas-sin-alcohol", 0, 0, 8, "BAGGIO FRESH LIVIANO Manzana x 1,5Lts — bulto x8 unidades", "baggio-fresh-liviano-manzana-x-1-5lts", { etiqueta: "sin-stock" }),
   p("BAGGIO FRESH LIVIANO Multifruta x 1Lts", "Baggio", "bebidas-sin-alcohol", 0, 0, 8, "BAGGIO FRESH LIVIANO Multifruta x 1Lts — bulto x8 unidades", "baggio-fresh-liviano-multifruta-x-1lts", { etiqueta: "sin-stock" }),
   p("BAGGIO PRONTO x 200cc Manzana", "Baggio", "bebidas-sin-alcohol", 8300, 461.11, 18, "BAGGIO PRONTO x 200cc Manzana — bulto x18 unidades", "baggio-pronto-x-200cc-manzana", {}),
-  p("BAGGIO PRONTO x 200cc Mixfrutal", "Baggio", "bebidas-sin-alcohol", 8300, 461.11, 18, "BAGGIO PRONTO x 200cc Mixfrutal — bulto x18 unidades", "baggio-pronto-x-200cc-mixfrutal", {}),
+  p("BAGGIO PRONTO x 200cc Mixfrutal", "Baggio", "bebidas-sin-alcohol", 0, 461.11, 18, "BAGGIO PRONTO x 200cc Mixfrutal — bulto x18 unidades", "baggio-pronto-x-200cc-mixfrutal", {etiqueta: "sin-stock"}),
   p("BAGGIO PRONTO x 200cc Naranja", "Baggio", "bebidas-sin-alcohol", 8300, 461.11, 18, "BAGGIO PRONTO x 200cc Naranja — bulto x18 unidades", "baggio-pronto-x-200cc-naranja", {}),
   p("BAGGIO PRONTO x 200cc Pera", "Baggio", "bebidas-sin-alcohol", 0, 0, 18, "BAGGIO PRONTO x 200cc Pera — bulto x18 unidades", "baggio-pronto-x-200cc-pera", { etiqueta: "sin-stock" }),
+  p("BAGGIO PRONTO x 200cc Multifruta", "Baggio", "bebidas-sin-alcohol", 8300, 461.11, 18, "BAGGIO PRONTO x 200cc Multifruta — bulto x18 unidades", "baggio-pronto-x-200cc-multifruta", {}),
   p("BAGGIO PRONTO x 200cc Durazno", "Baggio", "bebidas-sin-alcohol", 8300, 461.11, 18, "BAGGIO PRONTO x 200cc Durazno — bulto x18 unidades", "baggio-pronto-x-200cc-durazno", {}),
   p("BAGGIO FRESH LIVIANO Naranja x 200cc", "Baggio", "bebidas-sin-alcohol", 5870, 326.11, 18, "BAGGIO FRESH LIVIANO Naranja x 200cc — bulto x18 unidades", "baggio-fresh-liviano-naranja-x-200cc", {}),
   p("BAGGIO FRESH GASEOSA x 2.25Lts Cola", "Baggio", "bebidas-sin-alcohol", 8100, 1350, 6, "BAGGIO FRESH GASEOSA x 2.25Lts Cola — bulto x6 unidades", "baggio-fresh-gaseosa-x-2-25lts-cola", {}),
-  p("BAGGIO FRESH GASEOSA x 2.25Lts Lima", "Baggio", "bebidas-sin-alcohol", 8100, 1350, 6, "BAGGIO FRESH GASEOSA x 2.25Lts Lima — bulto x6 unidades", "baggio-fresh-gaseosa-x-2-25lts-lima", {}),
+  p("BAGGIO FRESH GASEOSA x 2.25Lts Lima", "Baggio", "bebidas-sin-alcohol", 0, 1350, 6, "BAGGIO FRESH GASEOSA x 2.25Lts Lima — bulto x6 unidades", "baggio-fresh-gaseosa-x-2-25lts-lima", {etiqueta: "sin-stock"}),
   p("BAGGIO FRESH GASEOSA x 2.25Lts Naranja", "Baggio", "bebidas-sin-alcohol", 8100, 1350, 6, "BAGGIO FRESH GASEOSA x 2.25Lts Naranja — bulto x6 unidades", "baggio-fresh-gaseosa-x-2-25lts-naranja", {}),
   p("BAGGIO FRESH GASEOSA x 2.25Lts Pomelo", "Baggio", "bebidas-sin-alcohol", 8100, 1350, 6, "BAGGIO FRESH GASEOSA x 2.25Lts Pomelo — bulto x6 unidades", "baggio-fresh-gaseosa-x-2-25lts-pomelo", {}),
   p("BAGGIO FRESH GASEOSA x 2.25Lts Citrus", "Baggio", "bebidas-sin-alcohol", 0, 0, 6, "BAGGIO FRESH GASEOSA x 2.25Lts Citrus — bulto x6 unidades", "baggio-fresh-gaseosa-x-2-25lts-citrus", { etiqueta: "sin-stock" }),
@@ -196,12 +207,12 @@ const PRODUCTS = [
   p("UVITA Blanco Dulce 1Lts", "Uvita", "vinos-espumantes", 16660, 1388.33, 12, "UVITA Blanco Dulce 1Lts — bulto x12 unidades", "uvita-blanco-dulce-1lts", {}),
   p("UVITA Tinto 1Lts", "Uvita", "vinos-espumantes", 16660, 1388.33, 12, "UVITA Tinto 1Lts — bulto x12 unidades", "uvita-tinto-1lts", {}),
   p("UVITA Tinto Dulce 1Lts", "Uvita", "vinos-espumantes", 16660, 1388.33, 12, "UVITA Tinto Dulce 1Lts — bulto x12 unidades", "uvita-tinto-dulce-1lts", {}),
-  p("VIÑA MAYOR Blend Tinto 700ml", "Viña", "vinos-espumantes", 8770, 1461.67, 6, "VIÑA MAYOR Blend Tinto 700ml — bulto x6 unidades", "vina-mayor-blend-tinto-700ml", {}),
+  p("VIÑA MAYOR Blend Tinto 750ml", "Viña", "vinos-espumantes", 8770, 1461.67, 6, "VIÑA MAYOR Blend Tinto 700ml — bulto x6 unidades", "vina-mayor-blend-tinto-700ml", {}),
   p("ZUMUVA Tetra Tinto x 1 Lts", "Zumuva", "vinos-espumantes", 15900, 1325, 12, "ZUMUVA Tetra Tinto x 1 Lts — bulto x12 unidades", "zumuva-tetra-tinto-x-1-lts", {}),
   p("ZUMUVA Tetra Blanco x 1 Lts", "Zumuva", "vinos-espumantes", 15900, 1325, 12, "ZUMUVA Tetra Blanco x 1 Lts — bulto x12 unidades", "zumuva-tetra-blanco-x-1-lts", {}),
   p("ZUMUVA Tetra Blanco Dulce x 1 Lts", "Zumuva", "vinos-espumantes", 15900, 1325, 12, "ZUMUVA Tetra Blanco Dulce x 1 Lts — bulto x12 unidades", "zumuva-tetra-blanco-dulce-x-1-lts", {}),
-  p("Fernet BRANCA x 750ml", "Branca", "bebidas-alcohol", 14770, 14770, 1, "Fernet BRANCA x 750ml — bulto x12 unidades", "fernet-branca-x-750ml", {}),
-  p("Fernet BRANCA x 450ml", "Branca", "bebidas-alcohol", 10150, 10150, 1, "Fernet BRANCA x 450ml — bulto x12 unidades", "fernet-branca-x-450ml", {}),
+  p("Fernet BRANCA x 750ml", "Branca", "bebidas-alcohol", 14770, 14770, 1, "Fernet BRANCA x 750ml — bulto x12 unidades", "fernet-branca-x-750ml", { destacado: true}),
+  p("Fernet BRANCA x 450ml", "Branca", "bebidas-alcohol", 0, 0, 1, "Fernet BRANCA x 450ml — bulto x12 unidades", "fernet-branca-x-450ml", {etiqueta: "sin-stock"}),
   p("Fernet BRANCA Menta x 450ml", "Branca", "bebidas-alcohol", 8600, 8600, 1, "Fernet BRANCA Menta x 450ml — bulto x12 unidades", "fernet-branca-menta-x-450ml", {}),
   p("CARPANO Rosso x 950ml", "Carpano", "bebidas-alcohol", 7500, 7500, 1, "CARPANO Rosso x 950ml — bulto x6 unidades", "carpano-rosso-x-950ml", {}),
   p("CARPANO Bianco x 950ml", "Carpano", "bebidas-alcohol", 7500, 7500, 1, "CARPANO Bianco x 950ml — bulto x6 unidades", "carpano-bianco-x-950ml", {}),
@@ -216,7 +227,7 @@ const PRODUCTS = [
   p("Alfajores Guaymallen TRIPLE Chocolate", "Triple", "galletitas", 0, 0, 24, "Alfajores Guaymallen TRIPLE Chocolate — bulto x24 unidades", "alfajores-guaymallen-triple-chocolate", { etiqueta: "sin-stock" }),
   p("Alfajores Guaymallen TRIPLE Blanco", "Triple", "galletitas", 0, 0, 24, "Alfajores Guaymallen TRIPLE Blanco — bulto x24 unidades", "alfajores-guaymallen-triple-dulce-de", { etiqueta: "sin-stock" }),
   p("Alfajor Capitan del Espacio Chocolate", "Alfajor", "galletitas", 43900, 1219.44, 36, "Alfajor Capitan del Espacio Chocolate — bulto x36 unidades", "alfajor-capitan-del-espacio-chocolate", {}),
-  p("Alfajor Capitan del Espacio Dulce de Leche", "Alfajor", "galletitas", 43900, 1219.44, 36, "Alfajor Capitan del Espacio Dulce de Leche — bulto x36 unidades", "alfajor-capitan-del-espacio-dulce-de", {}),
+  p("Alfajor Capitan del Espacio Dulce de Leche", "Alfajor", "galletitas", 21950, 1219.44, 18, "Alfajor Capitan del Espacio Dulce de Leche — bulto x36 unidades", "alfajor-capitan-del-espacio-dulce-de", {}),
   p("Alfajor Capitan del Espacio TRIPLE", "Triple", "galletitas", 44500, 1854.17, 24, "Alfajor Capitan del Espacio TRIPLE — bulto x24 unidades", "alfajor-capitan-del-espacio-triple", {}),
   p("Don Satur Bizcochos X 200GRS", "Don", "galletitas", 1110, 1110, 1, "Don Satur Bizcochos X 200GRS — bulto x30 unidades", "don-satur-bizcochos-x-200grs", {}),
   p("Don Satur Agridulce X 200GRS", "Don", "galletitas", 1110, 1110, 1, "Don Satur Agridulce X 200GRS — bulto x30 unidades", "don-satur-agridulce-x-200grs", {}),
@@ -224,8 +235,11 @@ const PRODUCTS = [
   p("Don Satur Magdalena x 220Grs", "Don", "galletitas", 2270, 2270, 1, "Don Satur Magdalena x 220Grs — bulto x10 unidades", "don-satur-magdalena-x-220grs", {}),
   p("Don Satur Talitas x 140g", "Don", "galletitas", 1210, 1210, 1, "Don Satur Talitas x 140g — bulto x20 unidades", "don-satur-talitas-x-140g", {}),
   p("Don Satur Talitas de Queso x 140g", "Don", "galletitas", 1210, 1210, 1, "Don Satur Talitas de Queso x 140g — bulto x20 unidades", "don-satur-talitas-de-queso-x-140g", {}),
+  p("Arroz Gallo PARBOIL Oro Medio Bolsón", "Gallo", "arroz", 6810, 1362, 5, "Arroz Gallo PARBOIL Oro — Medio bolsón", "arroz-gallo-parboil-oro-medio-bolson", {imagenSku: "arroz-gallo-parboil-oro-500-grs" }),
   p("Arroz Gallo PARBOIL Oro 500 Grs", "Gallo", "arroz", 13620, 1362, 10, "Arroz Gallo PARBOIL Oro 500 Grs — bulto x10 unidades", "arroz-gallo-parboil-oro-500-grs", {}),
+  p("Arroz Lucchetti Largo fino Medio Bolsón", "Lucchetti", "arroz", 4430, 886, 5, "Arroz Lucchetti Largo fino — Medio bolsón", "arroz-lucchetti-largo-fino-medio-bolson", {imagenSku: "arroz-lucchetti-largo-fino-500grs" }),
   p("Arroz Lucchetti Largo fino 500Grs", "Lucchetti", "arroz", 8860, 886, 10, "Arroz Lucchetti Largo fino 500Grs — bulto x10 unidades", "arroz-lucchetti-largo-fino-500grs", {}),
+  p("Monte Lirio Moños Medio Bolsón", "Monte Lirio", "fideos", 11025, 2205, 5, "Monte Lirio Moños — Medio bolsón", "monte-lirio-monos-medio-bolson", {imagenSku: "monte-lirio-monos-x-500g" }),
   p("Monte Lirio Moños x 500G", "Monte Lirio", "fideos", 22050, 2205, 10, "Monte Lirio Moños x 500G — bulto x10 unidades", "monte-lirio-monos-x-500g", {}),
   p("Lucchetti Ave Maria x 500GRS", "Lucchetti", "fideos", 1070, 1070, 1, "Lucchetti Ave Maria x 500GRS — bulto x15 unidades", "lucchetti-ave-maria-x-500grs", {}),
   p("Lucchetti Dedalito x 500GRS", "Lucchetti", "fideos", 1070, 1070, 1, "Lucchetti Dedalito x 500GRS — bulto x15 unidades", "lucchetti-dedalito-x-500grs", {}),
@@ -259,8 +273,8 @@ const PRODUCTS = [
   p("Atun en Lomitos Natural MORIXE lata x 170Grs", "Morixe", "almacen", 2200, 2200, 1, "Atun en Lomitos Natural MORIXE lata x 170Grs — bulto x48 unidades", "atun-en-lomitos-natural-morixe-lata-x", {}),
   p("Cafe Arlintan x 50Grs", "Cafe", "almacen", 3190, 3190, 1, "Cafe Arlintan x 50Grs — bulto x12 unidades", "cafe-arlintan-x-50grs", {}),
   p("Cafe Arlintan x 100Grs", "Cafe", "almacen", 4240, 4240, 1, "Cafe Arlintan x 100Grs — bulto x12 unidades", "cafe-arlintan-x-100grs", {}),
-  p("Caldo Knorr Verdura x 2uni x 24", "Caldo", "almacen", 11830, 492.92, 24, "Caldo Knorr Verdura x 2uni x 24 — bulto x24 unidades", "caldo-knorr-verdura-x-2uni-x-24", {}),
-  p("Caldo Knorr Gallina x 2uni x 24", "Caldo", "almacen", 11830, 492.92, 24, "Caldo Knorr Gallina x 2uni x 24 — bulto x24 unidades", "caldo-knorr-gallina-x-2uni-x-24", {}),
+  p("Caldo Knorr Verdura x 2uni x 24", "Caldo", "almacen", 13310, 554.58, 24, "Caldo Knorr Verdura x 2uni x 24 — bulto x24 unidades", "caldo-knorr-verdura-x-2uni-x-24", {}),
+  p("Caldo Knorr Gallina x 2uni x 24", "Caldo", "almacen", 13310, 554.58, 24, "Caldo Knorr Gallina x 2uni x 24 — bulto x24 unidades", "caldo-knorr-gallina-x-2uni-x-24", {}),
   p("Dulce de Membrillo De La Huerta Baggio x 2Kg", "Dulce", "almacen", 0, 0, 1, "Dulce de Membrillo De La Huerta Baggio x 2Kg — bulto x1 unidades", "dulce-de-membrillo-de-la-huerta-baggio-x", { etiqueta: "sin-stock" }),
   p("Dulce de Membrillo De La Huerta Baggio x 5Kg", "Dulce", "almacen", 13420, 13420, 1, "Dulce de Membrillo De La Huerta Baggio x 5Kg — bulto x1 unidades", "dulce-de-membrillo-de-la-huerta-baggio-x-2", {}),
   p("Dulce de Membrillo 7 Dias Baggio x 2Kg", "Dulce", "almacen", 0, 0, 1, "Dulce de Membrillo 7 Dias Baggio x 2Kg — bulto x1 unidades", "dulce-de-membrillo-7-dias-baggio-x-2kg", { etiqueta: "sin-stock" }),
@@ -275,19 +289,22 @@ const PRODUCTS = [
   p("Encendedores Candela x 25 Unidades", "Encendedores", "almacen", 8840, 353.6, 25, "Encendedores Candela x 25 Unidades — bulto x25 unidades", "encendedores-candela-x-25-unidades", {}),
   p("Encendedores Okey x 25 Unidades", "Encendedores", "almacen", 5820, 232.80, 25, "Encendedores Okey x 25 Unidades — bulto x25 unidades", "encendedores-okey-x-25-unidades", {}),
   p("Harina Morixe 000 1Kg", "Harina", "almacen", 8150, 815, 10, "Harina Morixe 000 1Kg — bulto x10 unidades", "harina-morixe-000-1kg", {}),
-  p("Harina Morixe 0000 1Kg", "Harina", "almacen", 10470, 1047, 10, "Harina Morixe 0000 1Kg — bulto x10 unidades", "harina-morixe-0000-1kg", {}),
+  p("Harina Morixe 0000 1Kg", "Harina", "almacen", 10740, 1074, 10, "Harina Morixe 0000 1Kg — bulto x10 unidades", "harina-morixe-0000-1kg", {destacado: true}),
   p("Harina Morixe Leudante 1Kg", "Harina", "almacen", 13410, 1341, 10, "Harina Morixe Leudante 1Kg — bulto x10 unidades", "harina-morixe-leudante-1kg", {}),
-  p("Harina Morixe para pizza 1Kg", "Harina", "almacen", 13000, 1300, 10, "Harina Morixe para pizza 1Kg — bulto x10 unidades", "harina-morixe-para-pizza-1kg", {}),
-  p("Harina Morixe Integral 1Kg", "Harina", "almacen", 11750, 1175, 10, "Harina Morixe Integral 1Kg — bulto x10 unidades", "harina-morixe-integral-1kg", {}),
+  p("Harina Morixe para pizza 1Kg", "Harina", "almacen", 0, 1300, 10, "Harina Morixe para pizza 1Kg — bulto x10 unidades", "harina-morixe-para-pizza-1kg", {etiqueta: "sin-stock"}),
+  p("Harina Morixe Integral 1Kg", "Harina", "almacen", 0, 1175, 10, "Harina Morixe Integral 1Kg — bulto x10 unidades", "harina-morixe-integral-1kg", {etiqueta: "sin-stock"}),
   p("Soda Sifón TORASSO 2Lts", "Torasso", "bebidas-sin-alcohol", 7490, 1248.33, 6, "Soda Sifón TORASSO 2Lts — bulto x6 unidades", "soda-sifon-torasso-2lts", {}),
-  p("Jugo de Limón Minerva x 250cc", "Jugo", "almacen", 0, 0, 12, "Jugo de Limón Minerva x 250cc", "jugo-de-limon-minerva-x-250cc", { etiqueta: "sin-stock" }),
+  p("Jugo de Limón Minerva x 250cc", "Jugo", "bebidas-sin-alcohol", 1690, 1690, 12, "Jugo de Limón Minerva x 250cc", "jugo-de-limon-minerva-x-250cc", {  }),
   p("Jugo Tang x 20 Uni.", "Jugo", "almacen", 7320, 7320, 1, "Jugo Tang x 20 Uni. — bulto x20 unidades", "jugo-tang-x-20-uni", {}),
   p("Jugo Clight x 20 Uni", "Jugo", "almacen", 7690, 7690, 1, "Jugo Clight x 20 Uni — bulto x20 unidades", "jugo-clight-x-20-uni", {}),
   p("Ketchup Hellmans x 60GRS", "Ketchup", "almacen", 21870, 729, 30, "Ketchup Hellmans x 60GRS — bulto x30 unidades", "ketchup-hellmans-x-60grs", {}),
   p("Ketchup Hellmans x 250Grs", "Ketchup", "almacen", 1920, 1920, 1, "Ketchup Hellmans x 250Grs", "ketchup-hellmans-x-250grs", {}),
   p("Maizena x 220Grs", "Maizena", "almacen", 2190, 2190, 1, "Maizena x 220Grs — bulto x50 unidades", "maizena-x-220grs", {}),
   p("Mayonesa Hellmans x 118Grs", "Mayonesa", "almacen", 15300, 765, 20, "Mayonesa Hellmans x 118Grs — bulto x20 unidades", "mayonesa-hellmans-x-118grs", {}),
-  p("Mayonesa Hellmans x 237Grs", "Mayonesa", "almacen", 33200, 1383.33, 24, "Mayonesa Hellmans x 237Grs — bulto x24 unidades", "mayonesa-hellmans-x-237grs", {}),
+  p("Mayonesa Natura x 125Grs", "Natura", "almacen", 14500, 725, 20, "Mayonesa Natura x 125Grs — bulto x20 unidades", "mayonesa-natura-x-125grs", {}),
+  p("Mayonesa Natura x 250Grs", "Natura", "almacen", 20990, 1749.17, 12, "Mayonesa Natura x 250Grs — bulto x12 unidades", "mayonesa-natura-x-250grs", {}),
+  p("Mayonesa Natura x 250Grs Medio Bolsón", "Natura", "almacen", 10495, 1749.17, 6, "Mayonesa Natura x 250Grs — Medio bolsón", "mayonesa-natura-x-250grs-medio-bolson", { imagenSku: "mayonesa-natura-x-250grs" }),
+  p("Mayonesa Hellmans x 237Grs", "Mayonesa", "almacen", 8330, 1383.33, 6, "Mayonesa Hellmans x 237Grs — bulto x6 unidades", "mayonesa-hellmans-x-237grs", {}),
   p("Mermelada Baggio De La Huerta 454Grs", "Mermelada", "almacen", 1580, 1580, 1, "Mermelada Baggio De La Huerta 454Grs — bulto x6 unidades", "mermelada-baggio-de-la-huerta-454grs", {}),
   p("Mostaza Savora DP x 250Grs", "Mostaza", "almacen", 1430, 1430, 1, "Mostaza Savora DP x 250Grs — bulto x24 unidades", "mostaza-savora-dp-x-250grs", {}),
   p("Pan Rallado Morixe 500Grs", "Pan", "almacen", 870, 870, 1, "Pan Rallado Morixe 500Grs — bulto x12 unidades", "pan-rallado-morixe-500grs", {}),
@@ -295,21 +312,29 @@ const PRODUCTS = [
   p("Pure de Tomate De La Huerta x 210cc", "Pure", "almacen", 8260, 458.89, 18, "Pure de Tomate De La Huerta x 210cc — bulto x18 unidades", "pure-de-tomate-de-la-huerta-x-210cc", {}),
   p("Pure de Tomate De La Huerta x 530cc", "Pure", "almacen", 9400, 783.33, 12, "Pure de Tomate De La Huerta x 530cc — bulto x12 unidades", "pure-de-tomate-de-la-huerta-x-530cc", {}),
   p("Pure de Tomate De La Huerta x 1030cc", "Pure", "almacen", 11680, 1460, 8, "Pure de Tomate De La Huerta x 1030cc — bulto x8 unidades", "pure-de-tomate-de-la-huerta-x-1030cc", {}),
-  p("Sal Fina Celusal Paquete x 500Grs", "Sal", "almacen", 1170, 1170, 1, "Sal Fina Celusal Paquete x 500Grs — bulto x30 unidades", "sal-fina-celusal-paquete-x-500grs", {}),
+  p("Sal Fina Celusal Paquete x 500Grs", "Sal", "almacen", 1250, 1250, 1, "Sal Fina Celusal Paquete x 500Grs — bulto x30 unidades", "sal-fina-celusal-paquete-x-500grs", {}),
   p("Sal Entrefina Celusal Paquete x 500Grs", "Sal", "almacen", 1140, 1140, 1, "Sal Entrefina Celusal Paquete x 500Grs — bulto x30 unidades", "sal-entrefina-celusal-paquete-x-500grs", {}),
   p("Sal Fina Tresal x 500Grs", "Sal", "almacen", 530, 530, 1, "Sal Fina Tresal x 500Grs — bulto x20 unidades", "sal-fina-tresal-x-500grs", {}),
   p("Sal Entrefina Tresal x 1Kg", "Sal", "almacen", 830, 830, 1, "Sal Entrefina Tresal x 1Kg — bulto x10 unidades", "sal-entrefina-tresal-x-1kg", {}),
-  p("Sal Gruesa Tresal x 1Kg", "Sal", "almacen", 0, 0, 10, "Sal Gruesa Tresal x 1Kg", "sal-gruesa-tresal-x-1kg", { etiqueta: "sin-stock" }),
-  p("Salsas Knorr Pizza 340Grs", "Salsas", "almacen", 0, 0, 1, "Salsas Knorr Pizza 340Grs — bulto x24 unidades", "salsas-knorr-pizza-340grs", { etiqueta: "sin-stock" }),
-  p("Vinagre Casalta x 1Lts", "Casalta", "almacen", 1280, 1280, 1, "Vinagre Casalta x 1Lts", "vinagre-casalta-x-1lts", {}),
+  p("Sal Gruesa Tresal x 1Kg", "Sal", "almacen", 970, 970, 10, "Sal Gruesa Tresal x 1Kg", "sal-gruesa-tresal-x-1kg", {}),
+  p("Salsas Knorr Pizza 340Grs", "Salsas", "almacen", 1470, 1470, 1, "Salsas Knorr Pizza 340Grs — bulto x24 unidades", "salsas-knorr-pizza-340grs", { }),
+  p("Vinagre Casalta x 1Lts", "Casalta", "almacen", 0, 1280, 1, "Vinagre Casalta x 1Lts", "vinagre-casalta-x-1lts", { etiqueta: "sin-stock"}),
   p("Yerba Amanda x 500Grs", "Yerba", "almacen", 1698, 1698, 1, "Yerba Amanda x 500Grs — bulto x10 unidades", "yerba-amanda-x-500grs", {}),
+  p("P/H ELEGANTE DOBLE HOJA (VIOLETA) 4/30MTS Medio Bolsón", "Elegante", "papeles", 11390, 2278, 5, "P/H ELEGANTE DOBLE HOJA (VIOLETA) 4/30MTS — Medio bolsón", "p-h-elegante-doble-hoja-violeta-4-30mts-medio-bolson", { imagenSku: "p-h-elegante-doble-hoja-violeta-4-30mts" }),
   p("P/H ELEGANTE DOBLE HOJA (VIOLETA) 4/30MTS", "Elegante", "papeles", 22780, 2278, 10, "P/H ELEGANTE DOBLE HOJA (VIOLETA) 4/30MTS — bulto x10 unidades", "p-h-elegante-doble-hoja-violeta-4-30mts", {}),
+  p("P/H ELEGANTE H/S X 80 M (VERDE) 4/80MTS Medio Bolsón", "Elegante", "papeles", 16610, 3322, 5, "P/H ELEGANTE H/S X 80 M (VERDE) 4/80MTS — Medio bolsón", "p-h-elegante-h-s-x-80-m-verde-4-80mts-medio-bolson", { imagenSku: "p-h-elegante-h-s-x-80-m-verde-4-80mts" }),
   p("P/H ELEGANTE H/S X 80 M (VERDE) 4/80MTS", "Elegante", "papeles", 33220, 3322, 10, "P/H ELEGANTE H/S X 80 M (VERDE) 4/80MTS — bulto x10 unidades", "p-h-elegante-h-s-x-80-m-verde-4-80mts", {}),
+  p("P/H ELEGANTE H/S X 6 (CELESTE) 6/30MTS Medio Bolsón", "Elegante", "papeles", 12120, 2020, 6, "P/H ELEGANTE H/S X 6 (CELESTE) 6/30MTS — Medio bolsón", "p-h-elegante-h-s-x-6-celeste-6-30mts-medio-bolson", { imagenSku: "p-h-elegante-h-s-x-6-celeste-6-30mts" }),
   p("P/H ELEGANTE H/S X 6 (CELESTE) 6/30MTS", "Elegante", "papeles", 24240, 2020, 12, "P/H ELEGANTE H/S X 6 (CELESTE) 6/30MTS — bulto x12 unidades", "p-h-elegante-h-s-x-6-celeste-6-30mts", {}),
+  p("P/H ELEGANTE H/S X 4 ( CELESTE) 4/30MTS Medio Bolsón", "Elegante", "papeles", 8020, 1336.67, 6, "P/H ELEGANTE H/S X 4 ( CELESTE) 4/30MTS — Medio bolsón", "p-h-elegante-h-s-x-4-celeste-4-30mts-medio-bolson", { imagenSku: "p-h-elegante-h-s-x-4-celeste-4-30mts" }),
   p("P/H ELEGANTE H/S X 4 ( CELESTE) 4/30MTS", "Elegante", "papeles", 16040, 1336.67, 12, "P/H ELEGANTE H/S X 4 ( CELESTE) 4/30MTS — bulto x12 unidades", "p-h-elegante-h-s-x-4-celeste-4-30mts", {}),
+  p("R/C ELEGANTE GIGANTE X 200 PAÑOS Medio Bolsón", "Elegante", "papeles", 11350, 1891.67, 6, "R/C ELEGANTE GIGANTE X 200 PAÑOS — Medio bolsón", "r-c-elegante-gigante-x-200-panos-medio-bolson", { imagenSku: "r-c-elegante-gigante-x-200-panos" }),
   p("R/C ELEGANTE GIGANTE X 200 PAÑOS", "Elegante", "papeles", 22700, 1891.67, 12, "R/C ELEGANTE GIGANTE X 200 PAÑOS — bulto x12 unidades", "r-c-elegante-gigante-x-200-panos", {}),
+  p("R/C ELEGANTE X 3 DE 50 PAÑOS (ROJO) Medio Bolsón", "Elegante", "papeles", 5990, 1497.50, 4, "R/C ELEGANTE X 3 DE 50 PAÑOS (ROJO) — Medio bolsón", "r-c-elegante-x-3-de-50-panos-rojo-medio-bolson", { imagenSku: "r-c-elegante-x-3-de-50-panos-rojo" }),
   p("R/C ELEGANTE X 3 DE 50 PAÑOS (ROJO)", "Elegante", "papeles", 11980, 1497.50, 8, "R/C ELEGANTE X 3 DE 50 PAÑOS (ROJO) — bulto x8 unidades", "r-c-elegante-x-3-de-50-panos-rojo", {}),
+  p("R/C DICHA X 3 DE 40 PAÑOS Medio Bolsón", "Dicha", "papeles", 7580, 1263.33, 6, "R/C DICHA X 3 DE 40 PAÑOS — Medio bolsón", "r-c-dicha-x-3-de-40-panos-medio-bolson", { imagenSku: "r-c-dicha-x-3-de-40-panos" }),
   p("R/C DICHA X 3 DE 40 PAÑOS", "Dicha", "papeles", 15160, 1263.33, 12, "R/C DICHA X 3 DE 40 PAÑOS — bulto x12 unidades", "r-c-dicha-x-3-de-40-panos", {}),
+  p("P/H PERIPEL INDIVIDUAL H/S X 80MTS X 30 Unidades Medio Bolsón", "Peripel", "papeles", 4100, 273.33, 15, "P/H PERIPEL INDIVIDUAL H/S X 80MTS X 30 Unidades — Medio bolsón", "p-h-peripel-individual-h-s-x-80mts-x-30--medio-bolson", { imagenSku: "p-h-peripel-individual-h-s-x-80mts-x-30-" }),
   p("P/H PERIPEL INDIVIDUAL H/S X 80MTS X 30 Unidades", "Peripel", "papeles", 8200, 273.33, 30, "P/H PERIPEL INDIVIDUAL H/S X 80MTS X 30 Unidades — bulto x30 unidades", "p-h-peripel-individual-h-s-x-80mts-x-30-", {}),
   p("P/H ELEGANTE H/S 24/30mts PREMIUM ALOE", "Elegante", "papeles", 8590, 357.92, 24, "P/H ELEGANTE H/S 24/30mts PREMIUM ALOE — bulto x24 unidades", "p-h-elegante-h-s-24-30mts-premium-aloe", {}),
   p("R/C ELEGANTE X 3 DE 100 PAÑOS (VERDE)", "Elegante", "papeles", 13190, 2638, 5, "R/C ELEGANTE X 3 DE 100 PAÑOS (VERDE) — bulto x5 unidades", "r-c-elegante-x-3-de-100-panos-verde", {}),
@@ -359,12 +384,13 @@ const PRODUCTS = [
   p("CURITAS Aposito de Tela 8 Unidades", "Curitas", "perfumeria", 33030, 1376.25, 24, "CURITAS Aposito de Tela 8 Unidades — bulto x24 unidades", "curitas-aposito-de-tela-8-unidades", {}),
   p("Desodorante AXE 96Grs", "Axe", "perfumeria", 3290, 3290, 1, "Desodorante AXE 96Grs — bulto x12 unidades", "desodorante-axe-96grs", {}),
   p("Desodorante DOVE x 150ML", "Dove", "perfumeria", 0, 0, 12, "Desodorante DOVE x 150ML", "desodorante-dove-x-150ml", { etiqueta: "sin-stock" }),
-  p("Desodorante REXONA x 90Grs", "Rexona", "perfumeria", 4010, 4010, 1, "Desodorante REXONA x 90Grs — bulto x12 unidades", "desodorante-rexona-x-90grs", {}),
-  p("Desodorante en crema REXONA Odorono C/Glicerina x 60Grs", "Rexona", "perfumeria", 2790, 2790, 1, "Desodorante en crema REXONA Odorono C/Glicerina x 60Grs — bulto x12 unidades", "desodorante-en-crema-rexona-odorono-c-gl", {}),
+  p("Desodorante REXONA x 90Grs Hombre", "Rexona", "perfumeria", 3690, 3690, 1, "Desodorante REXONA x 90Grs — bulto x12 unidades", "desodorante-rexona-x-90grs-hombre", {}),
+p("Desodorante REXONA x 90Grs Mujer", "Rexona", "perfumeria", 3690, 3690, 1, "Desodorante REXONA x 90Grs — bulto x12 unidades", "desodorante-rexona-x-90grs-mujer", {  }),
+  p("Desodorante en crema REXONA Odorono C/Glicerina x 60Grs", "Rexona", "perfumeria", 2980, 2980, 1, "Desodorante en crema REXONA Odorono C/Glicerina x 60Grs — bulto x12 unidades", "desodorante-en-crema-rexona-odorono-c-gl", {}),
   p("DOVE Shampoo x 200ml", "Dove", "perfumeria", 3950, 3950, 1, "DOVE Shampoo x 200ml — bulto x12 unidades", "dove-shampoo-x-200ml", {}),
   p("DOVE Acondicionador x 200ml", "Dove", "perfumeria", 3950, 3950, 1, "DOVE Acondicionador x 200ml — bulto x12 unidades", "dove-acondicionador-x-200ml", {}),
-  p("DOVE Shampoo DOY PACK x 180ml", "Dove", "perfumeria", 2590, 2590, 1, "DOVE Shampoo DOY PACK x 180ml — bulto x12 unidades", "dove-shampoo-doy-pack-x-180ml", {}),
-  p("DOVE Acondicionador DOY PACK x 180ml", "Dove", "perfumeria", 2590, 2590, 1, "DOVE Acondicionador DOY PACK x 180ml — bulto x12 unidades", "dove-acondicionador-doy-pack-x-180ml", {}),
+  p("DOVE Shampoo DOY PACK x 180ml", "Dove", "perfumeria", 2620, 2620, 1, "DOVE Shampoo DOY PACK x 180ml — bulto x12 unidades", "dove-shampoo-doy-pack-x-180ml", {}),
+  p("DOVE Acondicionador DOY PACK x 180ml", "Dove", "perfumeria", 2620, 2620, 1, "DOVE Acondicionador DOY PACK x 180ml — bulto x12 unidades", "dove-acondicionador-doy-pack-x-180ml", {}),
   p("Jabon DOVE x 90Grs", "Dove", "perfumeria", 2090, 2090, 1, "Jabon DOVE x 90Grs — bulto x60 unidades", "jabon-dove-x-90grs", {}),
   p("Jabon LUX x 120Grs", "Lux", "perfumeria", 1300, 1300, 1, "Jabon LUX x 120Grs — bulto x72 unidades", "jabon-lux-x-120grs", {}),
   p("Jabon LUX x 120 Grs X 3 Unidades", "Lux", "perfumeria", 2640, 2640, 1, "Jabon LUX x 120 Grs X 3 Unidades — bulto x24 unidades", "jabon-lux-x-120-grs-x-3-unidades", {}),
@@ -385,8 +411,8 @@ const PRODUCTS = [
   p("Prestobarba 3 filos GILLETTE", "Gillette", "perfumeria", 15600, 1560, 10, "Prestobarba 3 filos GILLETTE — bulto x10 unidades", "prestobarba-3-filos-gillette", {}),
   p("GILLETTE VENUS Simply 3", "Gillette", "perfumeria", 16410, 2051.25, 8, "GILLETTE VENUS Simply 3 — bulto x8 unidades", "gillette-venus-simply-3", {}),
   p("Proct. CALIPSO Anatomicos x 20 unidades", "Calipso", "perfumeria", 920, 920, 1, "Proct. CALIPSO Anatomicos x 20 unidades — bulto x40 unidades", "proct-calipso-anatomicos-x-20-unidades", {}),
-  p("SEDAL S.O.S Shampoo x 24 unidades", "Sedal", "perfumeria", 6240, 260, 24, "SEDAL S.O.S Shampoo x 24 unidades — bulto x24 unidades", "sedal-s-o-s-shampoo-x-24-unidades", {}),
-  p("SEDAL S.O.S Acondicionador x 24 unidades", "Sedal", "perfumeria", 6240, 260, 24, "SEDAL S.O.S Acondicionador x 24 unidades — bulto x24 unidades", "sedal-s-o-s-acondicionador-x-24-unidades", {}),
+  p("SEDAL S.O.S Shampoo x 24 unidades", "Sedal", "perfumeria", 7190,299, 24, "SEDAL S.O.S Shampoo x 24 unidades — bulto x24 unidades", "sedal-s-o-s-shampoo-x-24-unidades", {}),
+  p("SEDAL S.O.S Acondicionador x 24 unidades", "Sedal", "perfumeria", 7190, 299, 24, "SEDAL S.O.S Acondicionador x 24 unidades — bulto x24 unidades", "sedal-s-o-s-acondicionador-x-24-unidades", {}),
   p("SEDAL Shampoo x 190ml", "Sedal", "perfumeria", 2330, 2330, 1, "SEDAL Shampoo x 190ml — bulto x12 unidades", "sedal-shampoo-x-190ml", {}),
   p("SEDAL Acondicionador x 190ml", "Sedal", "perfumeria", 2330, 2330, 1, "SEDAL Acondicionador x 190ml — bulto x12 unidades", "sedal-acondicionador-x-190ml", {}),
   p("SEDAL Shampoo DP x 300ml", "Sedal", "perfumeria", 2650, 2650, 1, "SEDAL Shampoo DP x 300ml — bulto x12 unidades", "sedal-shampoo-dp-x-300ml", {}),
@@ -409,7 +435,7 @@ const PRODUCTS = [
   p("Choc.Leche y Mani 75Grs", "Choc.Leche", "chocolates", 28350, 2835, 10, "Choc.Leche y Mani 75Grs — bulto x10 unidades", "choc-leche-y-mani-75grs", {}),
   p("Chupelatin 15Grs", "Chupelatin", "chocolates", 28720, 897.50, 32, "Chupelatin 15Grs — bulto x32 unidades", "chupelatin-15grs", {}),
   p("Diabfort / Fort Diet Leche 20 x 50grs", "Diabfort", "chocolates", 0, 0, 20, "Diabfort / Fort Diet Leche 20 x 50grs — bulto x20 unidades", "diabfort-fort-diet-leche-20-x-50grs", { etiqueta: "sin-stock" }),
-  p("Dos Corazones 26Grs", "Dos", "chocolates", 20460, 1023, 20, "Dos Corazones 26Grs — bulto x20 unidades", "dos-corazones-26grs", {}),
+  p("Dos Corazones 26Grs", "Dos", "chocolates", 20460, 1023, 20, "Dos Corazones 26Grs — bulto x20 unidades", "dos-corazones-26grs", {destacado: true}),
   p("Feeling 20Grs", "Feeling", "chocolates", 15990, 533, 30, "Feeling 20Grs — bulto x30 unidades", "feeling-20grs", {}),
   p("Fort Chocolate C/Maní 30Grs", "Fort", "chocolates", 13300, 1108.33, 12, "Fort Chocolate C/Maní 30Grs — bulto x12 unidades", "fort-chocolate-c-mani-30grs", {}),
   p("Jack Chocolate con sorpresa", "Jack", "chocolates", 27750, 1387.5, 20, "Jack Chocolate con sorpresa — bulto x20 unidades", "jack-chocolate-con-sorpresa", {}),
@@ -422,11 +448,14 @@ const PRODUCTS = [
   p("Nobel 35Grs", "Nobel", "chocolates", 0, 0, 15, "Nobel 35Grs — bulto x15 unidades", "nobel-35grs", { etiqueta: "sin-stock" }),
   p("Paraguitas 13Grs", "Paraguitas", "chocolates", 23580, 589.50, 40, "Paraguitas 13Grs — bulto x40 unidades", "paraguitas-13grs", {}),
   p("Piratas 5Grs", "Piratas", "chocolates", 19340, 322.33, 60, "Piratas 5Grs — bulto x60 unidades", "piratas-5grs", {}),
-  p("Refresco Clasico 27Grs", "Refresco", "chocolates", 5390, 449.17, 12, "Refresco Clasico 27Grs — bulto x12 unidades", "refresco-clasico-27grs", {}),
+  p("Refresco Clasico 27Grs", "Refresco", "chocolates", 0, 449.17, 12, "Refresco Clasico 27Grs — bulto x12 unidades", "refresco-clasico-27grs", { etiqueta: "sin-stock"}),
   p("Refresco Tutti 27Grs", "Refresco", "chocolates", 5390, 449.17, 12, "Refresco Tutti 27Grs — bulto x12 unidades", "refresco-tutti-27grs", {}),
+  p("Refresco Mandarina 27Grs", "Refresco", "chocolates", 5390, 449.17, 12, "Refresco Mandarina 27Grs — bulto x12 unidades", "refresco-mandarina-27grs", {}),
+  p("Refresco Menta y Eucalipto 27Grs", "Refresco", "chocolates", 5390, 449.17, 12, "Refresco Menta y Eucalipto 27Grs — bulto x12 unidades", "refresco-menta-eucalipto-27grs", {}),
+  p("Refresco Menta y Naranja 27Grs", "Refresco", "chocolates", 5390, 449.17, 12, "Refresco Menta y Naranja 27Grs — bulto x12 unidades", "refresco-menta-naranja-27grs", {}),
   p("Tableta de Chocolate con Leche y Maní 250grs", "Tableta", "chocolates", 7880, 7880, 1, "Tableta de Chocolate con Leche y Maní 250grs — bulto x8 unidades", "tableta-de-chocolate-con-leche-y-mani-25", {}),
   p("Tivis 25Grs", "Tivis", "chocolates", 15570, 778.50, 20, "Tivis 25Grs — bulto x20 unidades", "tivis-25grs", {}),
-  p("Torroncino 23Grs", "Torroncino", "chocolates", 41890, 1396.33, 30, "Torroncino 23Grs — bulto x30 unidades", "torroncino-23grs", { destacado: true, etiqueta: "oferta" }),
+  p("Torroncino 23Grs", "Torroncino", "chocolates", 41890, 1396.33, 30, "Torroncino 23Grs — bulto x30 unidades", "torroncino-23grs", { etiqueta: "oferta" }),
   p("Vino Huella Pampa Blanco Dulce", "Huellapampa", "vinos-espumantes", 15980, 2663.33, 6, "Botella 750 ml", "huellapampa-blanco-dulce-750", {}),
   p("FABRE MONTMAYOU TERRUÑO Cabernet Franc 750ml", "Fabre Montmayou", "vinos-espumantes", 47950, 7991.67, 6, "FABRE MONTMAYOU TERRUÑO Cabernet Franc 750ml — bulto x6 unidades", "fabre-montmayou-terruno-cabernet-franc-7", {}),
   p("FABRE MONTMAYOU TERRUÑO Malbec 750ml", "Fabre Montmayou", "vinos-espumantes", 47950, 7991.67, 6, "FABRE MONTMAYOU TERRUÑO Malbec 750ml — bulto x6 unidades", "fabre-montmayou-terruno-malbec-750ml", {}),
@@ -439,16 +468,25 @@ const PRODUCTS = [
   p("Doña Paula Estate Cabernet 750ml", "Doña Paula", "vinos-espumantes", 34050, 5675, 6, "Doña Paula Estate Cabernet 750ml — bulto x6 unidades", "dona-paula-estate-cabernet-750ml", {}),
   p("Doña Paula Estate Sauvignon Blanc 750ml", "Doña Paula", "vinos-espumantes", 34050, 5675, 6, "Doña Paula Estate Sauvignon Blanc 750ml — bulto x6 unidades", "dona-paula-estate-sauvignon-blanc-750ml", {}),
   p("Doña Paula Estate Blue Blend 750ml", "Doña Paula", "vinos-espumantes", 34050, 5675, 6, "Doña Paula Estate Blue Blend 750ml — bulto x6 unidades", "dona-paula-estate-blue-blend-750ml", {}),
+  p("Fideos Monte Lirio Nido N°1 Medio Bolsón", "Monte Lirio", "fideos", 9475, 1895, 5, "Fideos Monte Lirio Nido N°1 — Medio bolsón", "monte-lirio-nido-n1-medio-bolson", {imagenSku: "monte-lirio-nido-n1-x-500g" }),
   p("Fideos Monte Lirio Nido N°1 x 500G", "Monte Lirio", "fideos", 18950, 1895, 10, "Fideos Monte Lirio Nido N°1 x 500G — bulto x10 unidades", "monte-lirio-nido-n1-x-500g", {}),
+  p("Fideos Monte Lirio Nido N°2 Medio Bolsón", "Monte Lirio", "fideos", 9475, 1895, 5, "Fideos Monte Lirio Nido N°2 — Medio bolsón", "monte-lirio-nido-n2-medio-bolson", {imagenSku: "monte-lirio-nido-n2-x-500g" }),
   p("Fideos Monte Lirio Nido N°2 x 500G", "Monte Lirio", "fideos", 18950, 1895, 10, "Fideos Monte Lirio Nido N°2 x 500G — bulto x10 unidades", "monte-lirio-nido-n2-x-500g", {}),
+  p("Fideos Monte Lirio Nido N°3 Medio Bolsón", "Monte Lirio", "fideos", 9475, 1895, 5, "Fideos Monte Lirio Nido N°3 — Medio bolsón", "monte-lirio-nido-n3-medio-bolson", {imagenSku: "monte-lirio-nido-n3-x-500g" }),
   p("Fideos Monte Lirio Nido N°3 x 500G", "Monte Lirio", "fideos", 18950, 1895, 10, "Fideos Monte Lirio Nido N°3 x 500G — bulto x10 unidades", "monte-lirio-nido-n3-x-500g", {}),
+  p("Fideos Monte Lirio Nido N°4 Medio Bolsón", "Monte Lirio", "fideos", 9475, 1895, 5, "Fideos Monte Lirio Nido N°4 — Medio bolsón", "monte-lirio-nido-n4-medio-bolson", {imagenSku: "monte-lirio-nido-n4-x-500g" }),
   p("Fideos Monte Lirio Nido N°4 x 500G", "Monte Lirio", "fideos", 18950, 1895, 10, "Fideos Monte Lirio Nido N°4 x 500G — bulto x10 unidades", "monte-lirio-nido-n4-x-500g", {}),
+  p("Fideos Monte Lirio Espinaca N°2 Medio Bolsón", "Monte Lirio", "fideos", 9475, 1895, 5, "Fideos Monte Lirio Espinaca N°2 — Medio bolsón", "monte-lirio-espinaca-n2-medio-bolson", {imagenSku: "monte-lirio-espinaca-n2-x-500g" }),
   p("Fideos Monte Lirio Espinaca N°2 x 500G", "Monte Lirio", "fideos", 18950, 1895, 10, "Fideos Monte Lirio Espinaca N°2 x 500G — bulto x10 unidades", "monte-lirio-espinaca-n2-x-500g", {}),
+  p("Fideos Monte Lirio Cabello de Ángel Medio Bolsón", "Monte Lirio", "fideos", 9475, 1895, 5, "Fideos Monte Lirio Cabello de Ángel — Medio bolsón", "monte-lirio-cabello-de-angel-medio-bolson", {imagenSku: "monte-lirio-cabello-de-angel-x-500g" }),
   p("Fideos Monte Lirio Cabello de Ángel x 500G", "Monte Lirio", "fideos", 18950, 1895, 10, "Fideos Monte Lirio Cabello de Ángel x 500G — bulto x10 unidades", "monte-lirio-cabello-de-angel-x-500g", {}),
+  p("Fideos Monte Lirio Palitos N°1 Medio Bolsón", "Monte Lirio", "fideos", 9475, 1895, 5, "Fideos Monte Lirio Palitos N°1 — Medio bolsón", "monte-lirio-palitos-n1-medio-bolson", {imagenSku: "monte-lirio-palitos-n1-x-500g" }),
   p("Fideos Monte Lirio Palitos N°1 x 500G", "Monte Lirio", "fideos", 18950, 1895, 10, "Fideos Monte Lirio Palitos N°1 x 500G — bulto x10 unidades", "monte-lirio-palitos-n1-x-500g", {}),
+  p("Fideos Monte Lirio Palitos N°1 Espinaca Medio Bolsón", "Monte Lirio", "fideos", 9475, 1895, 5, "Fideos Monte Lirio Palitos N°1 Espinaca — Medio bolsón", "monte-lirio-palitos-n1-espinaca-medio-bolson", {imagenSku: "monte-lirio-palitos-n1-espinaca-x-500g" }),
   p("Fideos Monte Lirio Palitos N°1 Espinaca x 500G", "Monte Lirio", "fideos", 18950, 1895, 10, "Fideos Monte Lirio Palitos N°1 Espinaca x 500G — bulto x10 unidades", "monte-lirio-palitos-n1-espinaca-x-500g", {}),
+  p("Fideos Monte Lirio Dobladitos N°2 Medio Bolsón", "Monte Lirio", "fideos", 9475, 1895, 5, "Fideos Monte Lirio Dobladitos N°2 — Medio bolsón", "monte-lirio-dobladitos-n2-medio-bolson", {imagenSku: "monte-lirio-dobladitos-n2-x-500g" }),
   p("Fideos Monte Lirio Dobladitos N°2 x 500G", "Monte Lirio", "fideos", 18950, 1895, 10, "Fideos Monte Lirio Dobladitos N°2 x 500G — bulto x10 unidades", "monte-lirio-dobladitos-n2-x-500g", {}),
-  p("Fideos Don Vicente Tallarin x 500Grs", "Don Vicente", "fideos", 27800, 2780, 10, "Fideos Don Vicente Tallarin x 500Grs — bulto x10 unidades", "fideos-don-vicente-tallarin-x-500grs", {}),
+  p("Fideos Don Vicente Tallarin x 500Grs", "Don Vicente", "fideos", 2780, 2780, 1, "Fideos Don Vicente Tallarin x 500Grs — bulto x10 unidades", "fideos-don-vicente-tallarin-x-500grs", {}),
   p("Fernet Vittone 750ml", "Vittone", "bebidas-alcohol", 68040, 5670, 12, "Fernet Vittone 750ml — bulto x12 unidades", "fernet-vittone-750ml", {}),
   p("Brancamenta 750ml", "Branca", "bebidas-alcohol", 0, 0, 12, "Brancamenta 750ml — bulto x12 unidades", "brancamenta-750ml", { etiqueta: "sin-stock" }),
   p("Gin Spirito Blu x 700cc", "Spirito", "bebidas-alcohol", 96000, 16000, 6, "Gin Spirito Blu x 700cc — bulto x6 unidades", "gin-spirito-blu-x-700cc", {}),
@@ -456,7 +494,7 @@ const PRODUCTS = [
   p("Punt e Mes 750ml", "Punt e Mes", "bebidas-alcohol", 42660, 7110, 6, "Punt e Mes 750ml — bulto x6 unidades", "punt-e-mes-750ml", {}),
   p("Iguana Rubia 1Lts", "Iguana", "cervezas", 28500, 2375, 12, "Iguana Rubia 1Lts — bulto x12 unidades", "iguana-rubia-1lts", {}),
   p("Palermo Liviana 1Lts", "Palermo", "cervezas", 28500, 2375, 12, "Palermo Liviana 1Lts — bulto x12 unidades", "palermo-liviana-1lts", {}),
-  p("Lata Warsteiner 473cc", "Warsteiner", "cervezas", 37500, 1562.50, 24, "Lata Warsteiner 473cc — bulto x24 unidades", "lata-warsteiner-473cc", {}),
+  p("Lata Warsteiner 473cc", "Warsteiner", "cervezas", 37500, 1562.50, 24, "Lata Warsteiner 473cc — bulto x24 unidades", "lata-warsteiner-473cc", {destacado: true}),
   p("Aceite Morixe Oliva 500ml", "Morixe", "almacen", 0, 0, 6, "Aceite Morixe Oliva 500ml — bulto x6 unidades", "aceite-morixe-oliva-500ml", { etiqueta: "sin-stock" }),
   p("Celusal Sal Gruesa Paquete x 500Grs", "Celusal", "almacen", 1010, 1010, 1, "Celusal Sal Gruesa Paquete x 500Grs — bulto x30 unidades", "celusal-sal-gruesa-paquete-x-500grs", {}),
   p("ZIPLOC Bolsa Conserva Grande x 10 uni", "Ziploc", "almacen", 4650, 4650, 1, "ZIPLOC Bolsa Conserva Grande x 10 uni", "ziploc-bolsa-conserva-grande-x-10-uni", {}),
@@ -475,6 +513,7 @@ const PRODUCTS = [
 ];
 function p(nombre, marca, categoria, precioBulto, precioUnidad, unidBulto, presentacion, sku, extra) {
   extra = extra || {};
+  const imgSku = extra.imagenSku || sku; // permite reusar la foto de otro producto (ej. "medio bolsón")
   return {
     nombre,
     marca,
@@ -484,13 +523,12 @@ function p(nombre, marca, categoria, precioBulto, precioUnidad, unidBulto, prese
     unidBulto,
     presentacion,
     sku,
-    imagen: `https://res.cloudinary.com/aklamn0e/image/upload/f_auto,q_auto/${sku}`,
+    imagen: `https://res.cloudinary.com/aklamn0e/image/upload/f_auto,q_auto/${imgSku}?v=${ASSET_VERSION}`,imagen: `https://res.cloudinary.com/aklamn0e/image/upload/f_auto,q_auto/${imgSku}?v=${ASSET_VERSION}`,
     descripcion: `${nombre} — ${presentacion}. Venta mayorista por bulto cerrado (x${unidBulto}).`,
     destacado: !!extra.destacado,
     etiqueta: extra.etiqueta || null, // "oferta" | "vendido" | "nuevo"
   };
 }
-
 /* ==========================================================================
    3.1) MARCAS — carrusel de logos arriba del catálogo
    Lista curada de marcas reales (no se usa el campo "marca" de PRODUCTS
@@ -659,7 +697,6 @@ function renderCategories() {
     const count = PRODUCTS.filter((prod) => prod.categoria === cat.id).length;
     return `
       <button class="category-card reveal" data-cat="${cat.id}">
-        <div class="category-card__tag">Pasillo ${cat.aisle}</div>
         <span class="category-card__icon"><svg viewBox="0 0 24 24">${CATEGORY_ICONS[cat.icon]}</svg></span>
         <span class="category-card__name">${cat.nombre}</span>
         <span class="category-card__count">${count} producto${count === 1 ? "" : "s"}</span>
@@ -720,7 +757,8 @@ function renderBrandFilter() {
    Precio GRANDE = por bulto · Precio CHICO = por unidad
    ========================================================================== */
 function productCardHTML(prod) {
-  const badges = [];
+    const badges = [];
+  if (prod.destacado) badges.push('<span class="badge badge--destacado">Destacado</span>');
   if (prod.etiqueta === "oferta") badges.push('<span class="badge badge--oferta">Oferta</span>');
   if (prod.etiqueta === "vendido") badges.push('<span class="badge badge--vendido">Más vendido</span>');
   if (prod.etiqueta === "nuevo") badges.push('<span class="badge badge--nuevo">Nuevo</span>');
